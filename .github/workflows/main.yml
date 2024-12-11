@@ -43,6 +43,6 @@ jobs:
 
     - name: Test with pytest
       run: |
-        pytest
+        echo "Secret is ${{ secrets.SPORTMONKS_API_TOKEN }}"
       env:
         SPORTMONKS_API_TOKEN: ${{ secrets.SPORTMONKS_API_TOKEN }}
