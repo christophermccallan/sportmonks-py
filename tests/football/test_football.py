@@ -127,10 +127,8 @@ def test_get_fixture(client):
     response = client.football.fixtures.get_fixtures(
         fixture_ids=fixture_id, includes=["venue", "sport", "events.player"]
     )
-    # response = client.football.fixtures.get_fixtures(fixture_ids=fixture_id)
 
     for page in response:
-        print(page)
         assert page["id"] == MOCK_SINGLE_FIXTURE_RESPONSE["data"]["id"]
         assert page["name"] == MOCK_SINGLE_FIXTURE_RESPONSE["data"]["name"]
         assert (
