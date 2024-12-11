@@ -17,6 +17,7 @@ dependencies = [
     "logging>=0.4.9.6",
     "pandas>=2.2.3",
     "polars>=1.14.0",
+    "pytest>=8.3.3",
     "pytz>=2024.2",
     "responses>=0.25.3",
     "ruff>=0.8.2",
