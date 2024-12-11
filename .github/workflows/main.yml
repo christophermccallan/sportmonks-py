@@ -1,17 +1,13 @@
-# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-
 name: Python package
 
 on:
   push:
-    branches: [ "feature/*" ]
+    branches: [ "feature/*", "main" ]
   pull_request:
     branches: [ "main" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -19,30 +15,54 @@ jobs:
         python-version: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
+      - uses: actions/checkout@v4
 
-    - name: Install UV
-      run: |
-        pip install uv
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Install dependencies
-      run: |
-        uv sync
-        pip install ruff pytest responses
+      - name: Install UV
+        run: |
+          pip install uv
 
-    - name: Install sportmonks-py
-      run: pip install -e .
+      - name: Install dependencies
+        run: |
+          uv sync
+          pip install ruff pytest responses
 
-    - name: Lint with ruff
-      run: |
-        ruff check .
+      - name: Install sportmonks-py
+        run: pip install -e .
 
-    - name: Run tests
-      run: |
-        pytest
-      env:
-        SPORTMONKS_API_TOKEN: "${{ secrets.SPORTMONKS_API_TOKEN }}"
+      - name: Lint with ruff
+        run: ruff check .
+
+      - name: Run tests
+        run: pytest
+        env:
+          SPORTMONKS_API_TOKEN: "${{ secrets.SPORTMONKS_API_TOKEN }}"
+
+  publish:
+    needs: [build]
+    runs-on: ubuntu-latest
+    if: ${{ success() && github.ref == 'refs/heads/main' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.12"
+
+      - name: Install build & twine
+        run: |
+          pip install build twine
+
+      - name: Build the distribution
+        run: python -m build
+
+      - name: Publish to PyPI
+        run: twine upload dist/*
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
