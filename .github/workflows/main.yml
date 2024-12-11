@@ -34,6 +34,9 @@ jobs:
         uv sync
         pip install ruff pytest responses
 
+    - name: Install sportmonks-py
+      run: pip install -e .
+
     - name: Lint with flake8
       run: |
         ruff check .
