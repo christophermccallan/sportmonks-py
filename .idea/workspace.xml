@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c15499be-5773-4fe6-a507-17bd43cfaaa9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/api_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/base_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/core/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/core/common_types.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/core/custom_exceptions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/core/filters.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/core/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/cricket/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/common.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/fixture.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/leagues.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/misc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/odds.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/standings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/statistics.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/teams.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/formula1/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/core/core_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/football/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/football/test_football.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2p4UWIGGl8PvqHI8KTf8QBEzmgl" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Python tests.Python tests for test_football.test_fixture_odds.executor": "Run",
+    "Python tests.pytest in core_test.py.executor": "Run",
+    "Python tests.pytest in test_api_client.py.executor": "Run",
+    "Python tests.pytest in test_football.py.executor": "Run",
+    "Python tests.pytest in test_odds.py.executor": "Run",
+    "Python tests.pytest in test_teams.py.executor": "Run",
+    "Python tests.test_football_fixtures.py.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "init-commit",
+    "last_opened_file_path": "/Users/chrismccallan/Repositories/packages/sportmonks-py/src/sportmonks_py",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/sportmonks_py" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/football" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python tests.pytest in test_football.py">
+    <configuration name="Python tests for test_football.test_fixture_odds" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="sportmonks-py" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/football" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_football.test_fixture_odds&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest in test_football.py" type="tests" factoryName="py.test" nameIsGenerated="true">
+      <module name="sportmonks-py" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="SPORTMONKS_API_TOKEN" value="AuC3JSM0gbfa2befBwznIaMEfoxljatxq7zWYOYD3B3pP5U1BC51qh3IqHMy" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/bin/python" />
+      <option name="SDK_NAME" value="Python 3.12 (sportmonks-py)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/football/test_football.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Python tests for test_football.test_fixture_odds" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-5a2391486177-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13763.11" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c15499be-5773-4fe6-a507-17bd43cfaaa9" name="Changes" comment="" />
+      <created>1732024871627</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1732024871627</updated>
+    </task>
+    <servers />
+  </component>
+</project>
