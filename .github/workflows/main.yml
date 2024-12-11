@@ -24,14 +24,25 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
+
+    - name: Install UV
+      run: |
+        pip install uv
+
     - name: Install dependencies
       run: |
-        uv add ruff pytest
-        if [ -f pyproject.toml ]; then uv add -r pyproject.toml; fi
-        uv up
-    - name: Lint with flake8
+        uv sync
+        pip install ruff pytest responses
+
+    - name: Install sportmonks-py
+      run: pip install -e .
+
+    - name: Lint with ruff
       run: |
         ruff check .
-    - name: Test with pytest
+
+    - name: Run tests
       run: |
         pytest
+      env:
+        SPORTMONKS_API_TOKEN: "${{ secrets.SPORTMONKS_API_TOKEN }}"

@@ -5,32 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c15499be-5773-4fe6-a507-17bd43cfaaa9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/api_client.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/base_client.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/core/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/core/common_types.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/core/custom_exceptions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/core/filters.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/core/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/cricket/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/common.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/fixture.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/leagues.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/misc.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/odds.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/standings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/statistics.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/football/teams.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/formula1/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/core/core_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/football/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/football/test_football.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/football/test_football.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/football/test_football.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,8 +46,8 @@
     "Python tests.test_football_fixtures.py.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "init-commit",
-    "last_opened_file_path": "/Users/chrismccallan/Repositories/packages/sportmonks-py/src/sportmonks_py",
+    "git-widget-placeholder": "feature/add-actions",
+    "last_opened_file_path": "/Users/chrismccallan/Repositories/packages/sportmonks-py",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
