@@ -32,7 +32,7 @@ jobs:
     - name: Install dependencies
       run: |
         uv sync
-        pip install ruff pytest
+        pip install ruff pytest responses
 
     - name: Lint with flake8
       run: |
