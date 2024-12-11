@@ -31,14 +31,12 @@ jobs:
 
     - name: Install dependencies
       run: |
-        uv add ruff pytest
-        if [ -f pyproject.toml ]; then uv add -r pyproject.toml; fi
-        uv up
+        uv sync
 
     - name: Lint with flake8
       run: |
         ruff check .
-        
+
     - name: Test with pytest
       run: |
         pytest
