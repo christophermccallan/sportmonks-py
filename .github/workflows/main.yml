@@ -37,11 +37,11 @@ jobs:
     - name: Install sportmonks-py
       run: pip install -e .
 
-    - name: Lint with flake8
+    - name: Lint with ruff
       run: |
         ruff check .
 
-    - name: Test with pytest
+    - name: Run tests
       run: |
         pytest
       env:
