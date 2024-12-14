@@ -50,7 +50,12 @@ for page in response:
     print(page)
 ```
 
-Nested includes are also supported. This allows retrieving more information about players who scored a goal, and can be done as below.
+Output
+```doctest
+{'id': 18528480, 'sport_id': 1, 'league_id': 271, 'season_id': 19686, 'stage_id': 77457696, 'group_id': None, 'aggregate_id': None, 'round_id': 273989, 'state_id': 5, 'venue_id': 1708, 'name': 'AGF vs Viborg', 'starting_at': '2022-07-24 12:00:00', 'result_info': 'AGF won after full-time.', 'leg': '1/1', 'details': None, 'length': 90, 'placeholder': False, 'has_odds': True, 'has_premium_odds': False, 'starting_at_timestamp': 1658664000}
+```
+
+Nested includes are also supported. This allows retrieving more information about players who scored a goal, and can be done as below. Full information on includes, filters and selects can be found on the SportMonks [documentation](https://docs.sportmonks.com/football/api/request-options).
 
 ```python
 from sportmonks_py import APIClient
@@ -74,15 +79,31 @@ Output
 The API backend is generic, so the same code can be used for other sports by changing the sport parameter in the client object.
 
 ```python
-from sportmonks_py import SportMonksClient
+from sportmonks_py import APIClient
 
-client = SportMonksClient(sport="cricket", api_token=f"{SPORTMONKS_API_TOKEN}")
+client = APIClient(sport="cricket", api_token=f"{SPORTMONKS_API_TOKEN}")
 
-fixture_id = [18528480]
+fixture_id = [1000]
 response = client.fixtures.get_fixtures(
-        fixture_ids=fixture_id, includes=["venue", "sport", "events.player"]
+        fixture_ids=fixture_id
     )
 
 for page in response:
     print(page)
+```
+
+Asynhronous support is also included and being improved upon, as can be seen in the example below.
+
+```python
+from sportmonks_py import APIClient
+
+client = APIClient(sport="football", api_token=f"{SPORTMONKS_API_TOKEN}")
+async for page in  client.teams.get_teams(team_id=100, async_mode=True):
+    print(page)
+
+```
+
+Output
+```doctest
+{'id': 100, 'sport_id': 1, 'country_id': 462, 'venue_id': 1380, 'gender': 'male', 'name': 'Ebbsfleet United', 'short_code': 'EBB', 'image_path': 'https://cdn.sportmonks.com/images/soccer/teams/4/100.png', 'founded': 1946, 'type': 'domestic', 'placeholder': False, 'last_played_at': '2024-12-14 15:00:00'}
 ```

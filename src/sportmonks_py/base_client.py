@@ -1,19 +1,11 @@
 import json
 import http.client
 import urllib.parse
-import logging
 import aiohttp
 from typing import Dict, Iterable, Any, Optional, AsyncIterator, Union, Iterator
 
 from sportmonks_py.utils.errors import status_code_to_exception, ApiTokenMissingError
 from sportmonks_py.utils.common_types import Includes, Response, Selects, Filters
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s : %(levelname)s : %(name)s : %(message)s",
-    handlers=[logging.StreamHandler()],
-)
-logger = logging.getLogger(__name__)
 
 
 class BaseClient:
@@ -37,7 +29,6 @@ class BaseClient:
         If async_mode=False, returns a synchronous iterator over API results.
         If async_mode=True, returns an asynchronous iterator over API results.
         """
-        # Common URL construction
         url = self._build_url(endpoint, params, includes, selects, filters)
 
         if async_mode:
@@ -55,35 +46,23 @@ class BaseClient:
                 response_data = self._make_request(url)
                 yield response_data["data"]
                 pagination = response_data.get("pagination", {})
-                url = (
-                    pagination.get("next_page") if pagination.get("has_more") else None
-                )
+                url = pagination.get("next_page") if pagination.get("has_more") else None
             except Exception as e:
-                logger.exception(f"Error processing URL {url}: {e}")
-                raise
+                raise ValueError(f"Error processing URL {url}: {e}")
 
-    def _get_async_generator(self, initial_url: str) -> AsyncIterator[Response]:
+    async def _get_async_generator(self, initial_url: str) -> AsyncIterator[Response]:
         """
         Asynchronous generator that yields results from the API.
         """
-
-        async def async_gen():
-            url = initial_url
-            while url:
-                try:
-                    response_data = await self._make_request_async(url)
-                    yield response_data["data"]
-                    pagination = response_data.get("pagination", {})
-                    url = (
-                        pagination.get("next_page")
-                        if pagination.get("has_more")
-                        else None
-                    )
-                except Exception as e:
-                    logger.exception(f"Error processing URL {url}: {e}")
-                    raise
-
-        return async_gen()
+        url = initial_url
+        while url:
+            try:
+                response_data = await self._make_request_async(url)
+                yield response_data["data"]
+                pagination = response_data.get("pagination", {})
+                url = pagination.get("next_page") if pagination.get("has_more") else None
+            except Exception as e:
+                raise ValueError(f"Error processing URL {url}: {e}")
 
     def _make_request(self, url: str) -> Dict[str, Any]:
         parsed_url = urllib.parse.urlparse(url)

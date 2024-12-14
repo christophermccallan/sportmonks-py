@@ -95,8 +95,12 @@ def test_get_player_by_search(client):
         assert player[0]["display_name"] == "Mohamed Salah"
 
 
-# @responses.activate
-# async def test_get_teams_by_country(client):
-#     teams = await client.teams.get_teams(country_id=462)
-#     for team in teams:
-#         assert team[0]["name"] == "Northern Ireland"
+@responses.activate
+def test_fixture_filter(client):
+    fixture_id = [18528480]
+    response = client.fixtures.get_fixtures(
+        fixture_ids=fixture_id, includes=["venue", "sport", "events.player"]
+    )
+
+    for page in response:
+        print(page)
