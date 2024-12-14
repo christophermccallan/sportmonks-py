@@ -1,7 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="sportmonks-py" type="CompoundRunConfigurationType">
-    <toRun name="core-tests" type="tests" />
-    <toRun name="football-tests" type="tests" />
-    <method v="2" />
-  </configuration>
-</component>
