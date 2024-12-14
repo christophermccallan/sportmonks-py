@@ -4,34 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c15499be-5773-4fe6-a507-17bd43cfaaa9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sportmonks_py/utils/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/api_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/api_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/base_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/base_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/utils/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/core/common_types.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/utils/common_types.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/core/custom_exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/utils/errors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/core/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/my.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/core/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/utils/helper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/cricket/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/football/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/football/common.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/football/fixture.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/football/leagues.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/football/misc.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/football/odds.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/football/standings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/football/statistics.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/football/teams.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/formula1/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/core/core_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/core/test_core.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/football/test_football.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/football/test_football.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
-    </list>
+    <list default="true" id="c15499be-5773-4fe6-a507-17bd43cfaaa9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -1,5 +1,4 @@
 import os
-import asyncio
 import pytest
 import responses
 from sportmonks_py import APIClient
