@@ -1,57 +1,62 @@
-from typing import Dict, Any, Iterator, Optional
+from typing import Optional, Union
 
 from sportmonks_py.base_client import BaseClient
-from sportmonks_py.core.common_types import Includes, Selects, Filters
+from sportmonks_py.utils.common_types import Includes, Selects, Filters, StdResponse, AsyncResponse
 
 
-class OtherClient(BaseClient):
+class StandingsClient(BaseClient):
     """
-    A client for accessing fixture-related data from the SportMonks API.
+    A client for accessing standings-related data from the SportMonks API.
     """
 
-    def __init__(self, api_token: str, base_url: str) -> None:
+    def __init__(self, base_url: str, api_token: str) -> None:
         """
-        Initialize the FixturesClient with an API token and base URL.
+        Initialize the Standings Client with a base_url, sport and API token.
 
         :param api_token: API token for authenticating requests.
         :param base_url: Base URL for the API.
         """
-        super().__init__(api_token=api_token, base_url=base_url)
+        super().__init__(base_url=base_url, api_token=api_token)
 
-    def get_prematch_news(
+    def get_all_standings(
         self,
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
-        This endpoint returns all the available pre-match news articles within your subscription
+        Returns all standings
 
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Whether to use async mode.
         :return: Iterator over fixture data.
         """
 
         return self._get(
-            "news/prematch",
+            "standings",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
-    def get_prematch_news_by_season(
+    def get_season_standings(
         self,
         season_id: int,
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
-        This endpoint returns all pre-match news articles from your requested season ID.
+        Returns the full league standing table from your requested season ID.
 
-        :param season_id: ID to retrieve.
+        :param season_id: Int
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Whether to use async mode.
         :return: Iterator over fixture data.
         """
 
@@ -59,64 +64,55 @@ class OtherClient(BaseClient):
             raise ValueError("Season ID must be provided")
 
         return self._get(
-            f"news/prematch/seasons/{season_id}",
+            f"standings/seasons/{season_id}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
-    def get_upcoming_prematch_news(
+    def get_standings_by_round(
         self,
+        round_id: int,
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
-        This endpoint returns all pre-match news articles for the upcoming fixtures within your subscription.
+        Returns the full league standing table from your requested round ID.
 
+        :param round_id: Int
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Whether to use async mode.
         :return: Iterator over fixture data.
         """
 
-        return self._get(
-            "news/prematch/upcoming",
-            params={"include": includes, "select": selects, "filter": filters},
-        )
-
-    def get_postmatch_news(
-        self,
-        includes: Optional[Includes] = None,
-        selects: Optional[Selects] = None,
-        filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
-        """
-        This endpoint returns all the available post-match news articles within your subscription.
-
-        :param includes: Objects to include in the response.
-        :param selects: Fields to include or exclude in the response.
-        :param filters: Filters to apply to the results.
-        :return: Iterator over fixture data.
-        """
+        if not round_id:
+            raise ValueError("Round ID must be provided")
 
         return self._get(
-            "news/postmatch",
+            f"standings/rounds/{round_id}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
-    def get_postmatch_news_by_season(
+    def get_standings_corrections(
         self,
         season_id: int,
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+            async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
-        This endpoint returns all post-match news articles from your requested season ID.
+        Returns the standing corrections from your requested season ID.
 
-        :param season_id: ID to retrieve.
+        :param season_id: Int
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Whether to use async mode.
         :return: Iterator over fixture data.
         """
 
@@ -124,96 +120,91 @@ class OtherClient(BaseClient):
             raise ValueError("Season ID must be provided")
 
         return self._get(
-            f"news/postmatch/seasons/{season_id}",
+            f"standings/corrections/seasons/{season_id}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
-    def get_rivals(
+    def get_live_standings_by_league(
         self,
+        league_id: int,
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
-        This endpoint returns all the teams within your subscription with the rivals information (if available).
+        Returns the LIVE league standing table from your requested league ID.
 
+        :param league_id: Int
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Whether to use async mode.
         :return: Iterator over fixture data.
         """
 
+        if not league_id:
+            raise ValueError("Round ID must be provided")
+
         return self._get(
-            "rivals",
+            f"standings/live/leagues/{league_id}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
-    def get_team_rivals(
+    def get_topscorers_by_season(
         self,
-        team_id: int,
+        season_id: int,
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
-        This endpoint returns the rivals of your requested team ID (if available).
+        This endpoint returns all the topscorers per stage of the requested season
 
-        :param team_id: Int
+        :param season_id: Int
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Whether to use async mode.
         :return: Iterator over fixture data.
         """
 
-        if not team_id:
-            raise ValueError("Team ID must be provided.")
+        if not season_id:
+            raise ValueError("Round ID must be provided")
 
         return self._get(
-            f"teams/rivals/{team_id}",
+            f"topscorers/seasons/{season_id}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
-    def get_commentaries(
+    def get_topscorers_by_stage(
         self,
+        stage_id: int,
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
-        Returns a textual representation of commentaries
+        This endpoint returns all the topscorers from your requested stage ID.
 
+        :param stage_id: Int
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Whether to use async mode.
         :return: Iterator over fixture data.
         """
 
-        return self._get(
-            "commentaries",
-            params={"include": includes, "select": selects, "filter": filters},
-        )
-
-    def get_fixture_commentary(
-        self,
-        fixture_id: int,
-        includes: Optional[Includes] = None,
-        selects: Optional[Selects] = None,
-        filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
-        """
-        RReturns a textual representation from the requested fixture ID.
-
-        :param fixture_id: int
-        :param includes: Objects to include in the response.
-        :param selects: Fields to include or exclude in the response.
-        :param filters: Filters to apply to the results.
-        :return: Iterator over fixture data.
-        """
-
-        if not fixture_id:
-            raise ValueError("Fixture ID is required")
+        if not stage_id:
+            raise ValueError("Stage ID must be provided")
 
         return self._get(
-            "commentaries",
+            f"topscorers/stages/{stage_id}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )

@@ -1,9 +1,8 @@
-from typing import Union, Dict, Any, Iterator, List, Optional
-
+from typing import Union, List, Optional
 from sportmonks_py.base_client import BaseClient
-from ..core.custom_exceptions import ParameterLengthException, InvalidDateFormat
-from ..core.utils import validate_date_format, validate_date_order
-from sportmonks_py.core.common_types import Includes, Selects, Filters
+from .utils.errors import ParameterLengthException, InvalidDateFormat
+from .utils.helper import validate_date_format, validate_date_order
+from .utils.common_types import Includes, Selects, Filters, StdResponse, AsyncResponse
 
 
 class FixturesClient(BaseClient):
@@ -11,32 +10,35 @@ class FixturesClient(BaseClient):
     A client for accessing fixture-related data from the SportMonks API.
     """
 
-    def __init__(self, api_token: str, base_url: str) -> None:
+    def __init__(self, base_url: str, api_token: str) -> None:
         """
-        Initialize the FixturesClient with an API token and base URL.
+        Initialize the Fixture Client with a base_url, sport and API token.
 
         :param api_token: API token for authenticating requests.
         :param base_url: Base URL for the API.
         """
-        super().__init__(api_token=api_token, base_url=base_url)
+        super().__init__(base_url=base_url, api_token=api_token)
 
     def get_all_fixtures(
         self,
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve all fixtures from the SportMonks database.
 
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         return self._get(
             "fixtures",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_fixtures(
@@ -45,7 +47,8 @@ class FixturesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve specific fixtures by their IDs.
 
@@ -53,12 +56,13 @@ class FixturesClient(BaseClient):
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         :raises ValueError: If no fixture IDs are provided.
         :raises ParameterLengthException: If more than 50 fixture IDs are provided.
         """
         if not fixture_ids:
-            raise ValueError("You must provide at least one fixture ID.")
+            raise ValueError("You must provide at least one fixture ID, ie [123456].")
         if len(fixture_ids) > 50:
             raise ParameterLengthException("Maximum of 50 fixture IDs allowed.")
 
@@ -66,12 +70,14 @@ class FixturesClient(BaseClient):
             return self._get(
                 f"fixtures/{fixture_ids[0]}",
                 params={"include": includes, "select": selects, "filter": filters},
+                async_mode=async_mode,
             )
 
         fixtures = ",".join(map(str, fixture_ids))
         return self._get(
             f"fixtures/multi/{fixtures}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_fixtures_by_date(
@@ -82,7 +88,8 @@ class FixturesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve fixtures for a specific date or date range.
 
@@ -92,6 +99,7 @@ class FixturesClient(BaseClient):
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         :raises InvalidDateFormat: If a date is in an invalid format.
         :raises ValueError: If the start date is after the end date.
@@ -110,11 +118,13 @@ class FixturesClient(BaseClient):
             return self._get(
                 endpoint,
                 params={"include": includes, "select": selects, "filter": filters},
+                async_mode=async_mode,
             )
 
         return self._get(
             f"fixtures/date/{date1}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_h2h(
@@ -124,7 +134,8 @@ class FixturesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve head-to-head fixtures for two teams.
 
@@ -133,36 +144,41 @@ class FixturesClient(BaseClient):
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
+        :raises ValueError: If team IDs are not positive integers.
         """
-
         if team1 <= 0 or team2 <= 0:
             raise ValueError("Team IDs must be positive integers.")
 
         return self._get(
             f"fixtures/head-to-head/{team1}/{team2}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
-    def get_fixtures_query(
+    def search_fixtures(
         self,
-        query: Union[int, str],
+        search: Union[int, str],
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
-        Search fixtures by query.
+        Search fixtures by string or int.
 
-        :param query: Query string or ID to search.
+        :param search: String or ID to search.
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         return self._get(
-            f"fixtures/search/{query}",
+            f"fixtures/search/{search}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_fixtures_by_market(
@@ -171,7 +187,8 @@ class FixturesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve upcoming fixtures for a specific market.
 
@@ -179,11 +196,13 @@ class FixturesClient(BaseClient):
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         return self._get(
             f"fixtures/upcoming/markets/{market_id}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_fixtures_by_station(
@@ -192,7 +211,8 @@ class FixturesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve upcoming fixtures for a specific TV station.
 
@@ -200,11 +220,13 @@ class FixturesClient(BaseClient):
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         return self._get(
             f"fixtures/upcoming/tv-stations/{station_id}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_fixtures_by_updates(
@@ -212,18 +234,21 @@ class FixturesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve fixtures updated within the last 10 seconds.
 
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         return self._get(
             "fixtures/latest",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_inplay_livescores(
@@ -231,18 +256,21 @@ class FixturesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         GET All Inplay Livescores: returns all the inplay fixtures.
 
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         return self._get(
             "fixtures/livescores/inplay",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_all_livescores(
@@ -250,18 +278,21 @@ class FixturesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the fixtures 15 minutes before the game starts. It will also disappear 15 minutes after the game is finished.
 
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         return self._get(
             "fixtures/livescores",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_livescore_updates(
@@ -269,16 +300,19 @@ class FixturesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns you all livescores that have received updates within 10 seconds.
 
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         return self._get(
             "fixtures/livescores/latest",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )

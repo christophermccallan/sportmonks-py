@@ -1,10 +1,10 @@
-from typing import Union, Dict, Any, Iterator, Optional
+from typing import Union, Optional
 
-from sportmonks_py.base_client import BaseClient
-from sportmonks_py.core.common_types import Includes, Selects, Filters
+from .base_client import BaseClient
+from .utils.common_types import Includes, Selects, Filters, StdResponse, AsyncResponse
 
-from ..core.custom_exceptions import InvalidDateFormat
-from ..core.utils import validate_date_format
+from .utils.errors import InvalidDateFormat
+from .utils.helper import validate_date_format
 
 
 class LeaguesClient(BaseClient):
@@ -12,32 +12,35 @@ class LeaguesClient(BaseClient):
     A client for accessing league-related data from the SportMonks API.
     """
 
-    def __init__(self, api_token: str, base_url: str) -> None:
+    def __init__(self, base_url: str, api_token: str) -> None:
         """
-        Initialize the FixturesClient with an API token and base URL.
+        Initialize the League Client with a base_url, sport and API token.
 
         :param api_token: API token for authenticating requests.
         :param base_url: Base URL for the API.
         """
-        super().__init__(api_token=api_token, base_url=base_url)
+        super().__init__(base_url=base_url, api_token=api_token)
 
     def get_all_leagues(
         self,
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the leagues available within your subscription
 
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         return self._get(
             "leagues",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_league(
@@ -46,7 +49,8 @@ class LeaguesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the league you've requested by ID.
 
@@ -54,6 +58,7 @@ class LeaguesClient(BaseClient):
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         :raises ValueError: If no fixture IDs are provided.
         """
@@ -64,6 +69,7 @@ class LeaguesClient(BaseClient):
         return self._get(
             f"leagues/{league_id}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_live_leagues(
@@ -71,19 +77,22 @@ class LeaguesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the leagues that with fixtures that are currently being played.
 
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
 
         return self._get(
             "leagues/live",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_league_by_fixture_date(
@@ -92,7 +101,8 @@ class LeaguesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the leagues with fixtures from your requested fixture date.
 
@@ -100,6 +110,7 @@ class LeaguesClient(BaseClient):
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :raises InvalidDateFormat: If a date is in an invalid format.
         :return: Iterator over fixture data.
         """
@@ -110,6 +121,7 @@ class LeaguesClient(BaseClient):
         return self._get(
             f"leagues/fixtures/{date}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_leagues_by_country_id(
@@ -118,7 +130,8 @@ class LeaguesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the leagues with fixtures from your requested fixture date.
 
@@ -126,6 +139,7 @@ class LeaguesClient(BaseClient):
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :raises InvalidDateFormat: If a date is in an invalid format.
         :return: Iterator over fixture data.
         """
@@ -136,27 +150,31 @@ class LeaguesClient(BaseClient):
         return self._get(
             f"leagues/countries/{country_id}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
-    def get_leagues_query(
+    def search_leagues(
         self,
-        query: Union[int, str],
+        search: Union[int, str],
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
-        Returns all the leagues that match your search query.
+        Returns all the leagues that match your search.
 
-        :param query: Query string or ID to search.
+        :param search: String or ID to search.
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         return self._get(
-            f"leagues/search/{query}",
+            f"leagues/search/{search}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_all_leagues_by_team(
@@ -165,7 +183,8 @@ class LeaguesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the current and historical leagues from your requested team id.
 
@@ -173,11 +192,13 @@ class LeaguesClient(BaseClient):
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         return self._get(
             f"leagues/teams/{team_id}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_current_leagues_by_team(
@@ -186,7 +207,8 @@ class LeaguesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the current leagues of your requested team id.
 
@@ -194,11 +216,13 @@ class LeaguesClient(BaseClient):
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         return self._get(
             f"leagues/teams/{team_id}/current",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_all_seasons(
@@ -206,19 +230,22 @@ class LeaguesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the seasons available within your subscription
 
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
 
         return self._get(
             "seasons",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_season(
@@ -227,7 +254,8 @@ class LeaguesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the league you've requested by ID.
 
@@ -235,6 +263,7 @@ class LeaguesClient(BaseClient):
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         :raises ValueError: If no fixture IDs are provided.
         """
@@ -245,6 +274,7 @@ class LeaguesClient(BaseClient):
         return self._get(
             f"seasons/{season_id}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_season_by_team_id(
@@ -253,7 +283,8 @@ class LeaguesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns seasons by team ID.
 
@@ -261,6 +292,7 @@ class LeaguesClient(BaseClient):
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :raises InvalidDateFormat: If a date is in an invalid format.
         :return: Iterator over fixture data.
         """
@@ -271,27 +303,31 @@ class LeaguesClient(BaseClient):
         return self._get(
             f"seasons/{team_id}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
-    def get_seasons_query(
+    def search_seasons(
         self,
-        query: Union[int, str],
+        search: Union[int, str],
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
-        Returns all the seasons that match your search query.
+        Returns all the seasons that match your search.
 
-        :param query: Query string or ID to search.
+        :param search: String or ID to search.
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         return self._get(
-            f"seasons/search/{query}",
+            f"seasons/search/{search}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_all_stages(
@@ -299,18 +335,21 @@ class LeaguesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all stages available within your subscription
 
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         return self._get(
             "stages",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_stage_by_id(
@@ -319,7 +358,8 @@ class LeaguesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns stage information from your requested stage ID.
 
@@ -327,6 +367,7 @@ class LeaguesClient(BaseClient):
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :raises InvalidDateFormat: If a date is in an invalid format.
         :return: Iterator over fixture data.
         """
@@ -337,6 +378,7 @@ class LeaguesClient(BaseClient):
         return self._get(
             f"stages/{stage_id}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_stages_by_season_id(
@@ -345,7 +387,8 @@ class LeaguesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns stage information from your requested stage ID.
 
@@ -353,6 +396,7 @@ class LeaguesClient(BaseClient):
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :raises InvalidDateFormat: If a date is in an invalid format.
         :return: Iterator over fixture data.
         """
@@ -360,27 +404,34 @@ class LeaguesClient(BaseClient):
         if not season_id:
             raise ValueError("Country ID not supplied")
 
-        return self._get(f"stages/seasons/{season_id}")
+        return self._get(
+            f"stages/seasons/{season_id}",
+            params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
+        )
 
-    def get_stages_query(
+    def search_stages(
         self,
-        query: Union[int, str],
+        search: Union[int, str],
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
-        Returns all stages that matches your search query
+        Returns all stages that matches your search.
 
-        :param query: Query string or ID to search.
+        :param search: String or ID to search.
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         return self._get(
-            f"stages/search/{query}",
+            f"stages/search/{search}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_all_rounds(
@@ -388,18 +439,21 @@ class LeaguesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the rounds available within your subscription.
 
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         return self._get(
             "rounds",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_round(
@@ -408,7 +462,8 @@ class LeaguesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns round information from your requested round ID.
 
@@ -416,6 +471,7 @@ class LeaguesClient(BaseClient):
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         if not round_id:
@@ -424,6 +480,7 @@ class LeaguesClient(BaseClient):
         return self._get(
             f"rounds/{round_id}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_round_by_season_id(
@@ -432,7 +489,8 @@ class LeaguesClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns round information from your requested round ID.
 
@@ -440,6 +498,7 @@ class LeaguesClient(BaseClient):
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
         if not season_id:
@@ -448,27 +507,31 @@ class LeaguesClient(BaseClient):
         return self._get(
             f"rounds/{season_id}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
-    def get_rounds_query(
+    def search_rounds(
         self,
-        query: Union[int, str],
+        search: Union[int, str],
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Iterator[Dict[str, Any]]:
+        async_mode: bool = False,
+    ) -> Union[StdResponse, AsyncResponse]:
         """
-        Returns all stages that matches your search query
+        Returns all stages that matches your search
 
-        :param query: Query string or ID to search.
+        :param search: String or ID to search.
         :param includes: Objects to include in the response.
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
+        :param async_mode: Boolean flag for asynchronous mode.
         :return: Iterator over fixture data.
         """
-        if not query:
-            raise ValueError("A query string must be supplied")
+        if not search:
+            raise ValueError("A search string must be supplied")
         return self._get(
-            f"rounds/search/{query}",
+            f"rounds/search/{search}",
             params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )

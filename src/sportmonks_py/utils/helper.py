@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Optional
 
-from .custom_exceptions import InvalidIncludes
+from .errors import InvalidIncludes
 
 
 def validate_date_format(date_str: str) -> bool:
@@ -44,7 +44,7 @@ def validate_date_order(date1: str, date2: str) -> bool:
     return True
 
 
-def validate_query_params(params: Optional[set[str]], allowed_params: set[str]) -> None:
+def validate_search_params(params: Optional[set[str]], allowed_params: set[str]) -> None:
     """
     Validate that all elements in `includes` are within the `allowed_includes` set.
 

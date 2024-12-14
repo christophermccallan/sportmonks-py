@@ -2,9 +2,11 @@ import json
 import http.client
 import urllib.parse
 import logging
-from typing import Dict, Iterable, Union, Any, Optional
-from sportmonks_py.core.custom_exceptions import ApiTokenMissingError
-from sportmonks_py.core.common_types import Includes, Response, Selects, Filters
+import aiohttp
+from typing import Dict, Iterable, Any, Optional, AsyncIterator, Union, Iterator
+
+from sportmonks_py.utils.errors import status_code_to_exception, ApiTokenMissingError
+from sportmonks_py.utils.common_types import Includes, Response, Selects, Filters
 
 logging.basicConfig(
     level=logging.INFO,
@@ -15,18 +17,12 @@ logger = logging.getLogger(__name__)
 
 
 class BaseClient:
-    def __init__(self, api_token: str, base_url: str):
-        """
-        Initialize the base client with an API token and base URL.
-
-        :param api_token: API token for authenticating requests.
-        :param base_url: Base URL for the API.
-        """
+    def __init__(self, base_url: str, api_token: str):
         if not api_token:
             raise ApiTokenMissingError("API token is required.")
 
-        self.api_token = api_token
         self.base_url = base_url.rstrip("/")
+        self.api_token = api_token
 
     def _get(
         self,
@@ -35,123 +31,113 @@ class BaseClient:
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-    ) -> Response:
+        async_mode: bool = False,
+    ) -> Union[Iterable[Response], AsyncIterator[Response]]:
         """
-        Execute a GET request to a paginated API endpoint and yield results.
-
-        :param endpoint: API endpoint to request.
-        :param params: Query parameters to include in the request.
-        :param includes: List of includes to add to the request.
-        :param selects: Fields to select or exclude in the response.
-        :param filters: Filters to apply to the request.
-        :return: Iterator yielding API results.
+        If async_mode=False, returns a synchronous iterator over API results.
+        If async_mode=True, returns an asynchronous iterator over API results.
         """
-        params = params or {}
+        # Common URL construction
+        url = self._build_url(endpoint, params, includes, selects, filters)
 
-        if includes:
-            params["include"] = self._prepare_includes(includes)
-        if selects:
-            params["select"] = self._prepare_selects(selects)
-        if filters:
-            params.update(self._prepare_filters(filters))
+        if async_mode:
+            return self._get_async_generator(url)
+        else:
+            return self._get_sync_generator(url)
 
-        params = {key: value for key, value in params.items() if value}
-
-        query_string = self._build_query_string(params) if params else ""
-        url = f"{self.base_url}/{endpoint}"
-        if query_string:
-            url = f"{url}?{query_string}"
-
-        logger.info(f"Request URL: {url}")
-
+    def _get_sync_generator(self, initial_url: str) -> Iterator[Response]:
+        """
+        Synchronous generator that yields results from the API.
+        """
+        url = initial_url
         while url:
             try:
                 response_data = self._make_request(url)
                 yield response_data["data"]
-
                 pagination = response_data.get("pagination", {})
                 url = (
                     pagination.get("next_page") if pagination.get("has_more") else None
                 )
-            except http.client.HTTPException as http_err:
-                logger.error(f"HTTP error occurred: {http_err}")
-                raise
-            except json.JSONDecodeError as json_err:
-                logger.error(f"JSON decode error: {json_err}")
-                raise
             except Exception as e:
                 logger.exception(f"Error processing URL {url}: {e}")
                 raise
 
-    def _make_request(self, url: str) -> Dict[str, Any]:
+    def _get_async_generator(self, initial_url: str) -> AsyncIterator[Response]:
         """
-        Make a GET request to the given URL.
+        Asynchronous generator that yields results from the API.
+        """
 
-        :param url: Fully constructed URL.
-        :return: JSON-decoded response.
-        """
+        async def async_gen():
+            url = initial_url
+            while url:
+                try:
+                    response_data = await self._make_request_async(url)
+                    yield response_data["data"]
+                    pagination = response_data.get("pagination", {})
+                    url = (
+                        pagination.get("next_page")
+                        if pagination.get("has_more")
+                        else None
+                    )
+                except Exception as e:
+                    logger.exception(f"Error processing URL {url}: {e}")
+                    raise
+
+        return async_gen()
+
+    def _make_request(self, url: str) -> Dict[str, Any]:
         parsed_url = urllib.parse.urlparse(url)
         conn = http.client.HTTPSConnection(parsed_url.netloc)
         path = parsed_url.path + (f"?{parsed_url.query}" if parsed_url.query else "")
-
         conn.request("GET", path, headers=self._build_headers())
         response = conn.getresponse()
         response_content = response.read()
 
         if response.status != 200:
-            logger.error(
-                f"API error: {response.status} - {response.reason}. URL: {url}"
-            )
-            raise Exception(f"API request failed with status {response.status}")
+            raise status_code_to_exception(response.status, response_content)
 
         return json.loads(response_content.decode("utf-8"))
 
-    def _build_headers(self) -> Dict[str, str]:
-        """
-        Build default headers for API requests.
+    async def _make_request_async(self, url: str) -> Dict[str, Any]:
+        headers = self._build_headers()
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url, headers=headers) as response:
+                response_content = await response.read()
+                if response.status != 200:
+                    raise status_code_to_exception(response.status, response_content)
+                return json.loads(response_content.decode("utf-8"))
 
-        :return: Dictionary of headers.
-        """
+    def _build_url(
+        self,
+        endpoint: str,
+        params: Optional[Dict[str, Any]],
+        includes: Optional[Includes],
+        selects: Optional[Selects],
+        filters: Optional[Filters],
+    ) -> str:
+        params = params or {}
+
+        if includes:
+            params["include"] = ";".join(includes)
+        if selects:
+            params["select"] = json.dumps(selects, separators=(",", ":"))
+        if filters:
+            params.update({f"filter[{k}]": v for k, v in filters.items()})
+
+        params = {k: v for k, v in params.items() if v}
+
+        search_string = urllib.parse.urlencode(params, doseq=True)
+        encoded_endpoint = urllib.parse.quote(endpoint, safe="/")
+
+        url = f"{self.base_url}/{encoded_endpoint}"
+        if search_string:
+            url = f"{url}?{search_string}"
+
+        return url
+
+    def _build_headers(self) -> Dict[str, str]:
         return {
-            "Authorization": f"{self.api_token}",
+            "Authorization": self.api_token,
             "Content-Type": "application/json",
             "User-Agent": "sportmonks-py (https://github.com/cmccallan/sportmonks-py)",
         }
-
-    @staticmethod
-    def _prepare_includes(includes: Iterable[str]) -> str:
-        """
-        Prepare the 'includes' parameter for the API request.
-
-        :param includes: Iterable of includes.
-        :return: Semicolon-separated string of includes.
-        """
-        return ";".join(map(str, includes))
-
-    @staticmethod
-    def _prepare_selects(selects: dict[Union[str, Any]]) -> str:
-        """
-        Prepare the 'selects' parameter for the API request.
-        :param selects: Dictionary of fields to include/exclude.
-        :return: JSON-encoded string of selects.
-        """
-        return json.dumps(selects, separators=(",", ":"))
-
-    @staticmethod
-    def _prepare_filters(filters: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Prepare the filters for the API request.
-        :param filters: Dictionary of filters.
-        :return: Dictionary of prepared filters.
-        """
-        return {f"filter[{key}]": value for key, value in filters.items()}
-
-    @staticmethod
-    def _build_query_string(params: Dict[str, Any]) -> str:
-        """
-        Build the query string for the URL.
-
-        :param params: Dictionary of query parameters.
-        :return: URL-encoded query string.
-        """
-        return urllib.parse.urlencode(params, doseq=True)
