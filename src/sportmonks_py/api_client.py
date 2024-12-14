@@ -1,3 +1,4 @@
+import logging
 from sportmonks_py.utils.config import config
 from sportmonks_py.base_client import BaseClient
 from sportmonks_py import APIClient
@@ -14,3 +15,5 @@ class SportMonksClient(BaseClient):
         base_url = f"{config.BASE_URL}{sport}/"
         super().__init__(base_url=base_url, api_token=api_token)
         self.client = APIClient(sport=sport, api_token=api_token)
+
+        logging.getLogger("sportmonks-py").info(f"Initialized SportMonksClient with sport: {sport}").addHandler(logging.NullHandler())
