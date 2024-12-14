@@ -10,6 +10,36 @@ class BaseUrlMissingError(Exception):
     pass
 
 
+class BadRequestsError(Exception):
+    """Raised when a bad request is made"""
+
+    pass
+
+
+class UnauthorizedError(Exception):
+    """Raised when an unauthorized request is made"""
+
+    pass
+
+
+class ForbiddenError(Exception):
+    """Raised when a forbidden request is made"""
+
+    pass
+
+
+class TooManyRequestsError(Exception):
+    """Raised when too many requests are made"""
+
+    pass
+
+
+class InternalServerError(Exception):
+    """Raised when an internal server error occurs"""
+
+    pass
+
+
 class SportMonksAPIError(Exception):
     """Raised when SportMonks returns an API error."""
 
@@ -50,3 +80,12 @@ class InvalidIncludes(Exception):
     """Raised when an invalid object is passed as an includes argument"""
 
     pass
+
+
+status_code_to_exception = {
+    400: BadRequestsError("Bad request."),
+    401: UnauthorizedError("Unauthorized request."),
+    403: ForbiddenError("Forbidden request."),
+    429: TooManyRequestsError("Too many requests, please try again later."),
+    500: InternalServerError("Internal server error."),
+}
