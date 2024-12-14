@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Union
 
 from sportmonks_py.base_client import BaseClient
 from sportmonks_py.utils.common_types import Includes, Selects, Filters, StdResponse, AsyncResponse
@@ -24,7 +24,7 @@ class OddsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve all available pre-match odds.
 
@@ -49,7 +49,7 @@ class OddsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve pre-match odds for a specific fixture. Optionally filter by bookmaker or market.
 
@@ -86,7 +86,7 @@ class OddsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve pre-match odds for fixtures updated within the last 10 seconds.
 
@@ -108,7 +108,7 @@ class OddsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve all available in-play odds.
 
@@ -133,7 +133,7 @@ class OddsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve in-play odds for a specific fixture. Optionally filter by bookmaker or market.
 
@@ -170,7 +170,7 @@ class OddsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve in-play odds for fixtures updated within the last 10 seconds.
 
@@ -195,7 +195,7 @@ class OddsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve pre-match odds for a specific fixture from the Premium feed.
         Optionally filter by bookmaker or market.

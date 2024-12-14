@@ -1,5 +1,5 @@
+from typing import Union
 from utils.common_types import StdResponse, AsyncResponse
-
 from sportmonks_py.base_client import BaseClient
 
 
@@ -20,7 +20,7 @@ class MyClient(BaseClient):
     def enrichments(
         self,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all available enrichments for the entities.
         :param async_mode: Whether to use async mode.
@@ -32,7 +32,7 @@ class MyClient(BaseClient):
     def leagues(
         self,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all available leagues for the entities.
         :param async_mode: Whether to use async mode.
@@ -44,7 +44,7 @@ class MyClient(BaseClient):
     def resources(
         self,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all available resources for the entities.
         :param async_mode: Whether to use async mode.

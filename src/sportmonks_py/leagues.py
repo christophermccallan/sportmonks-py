@@ -27,7 +27,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the leagues available within your subscription
 
@@ -50,7 +50,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the league you've requested by ID.
 
@@ -78,7 +78,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the leagues that with fixtures that are currently being played.
 
@@ -102,7 +102,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the leagues with fixtures from your requested fixture date.
 
@@ -131,7 +131,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the leagues with fixtures from your requested fixture date.
 
@@ -160,7 +160,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the leagues that match your search.
 
@@ -184,7 +184,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the current and historical leagues from your requested team id.
 
@@ -208,7 +208,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the current leagues of your requested team id.
 
@@ -231,7 +231,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the seasons available within your subscription
 
@@ -255,7 +255,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the league you've requested by ID.
 
@@ -284,7 +284,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns seasons by team ID.
 
@@ -313,7 +313,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the seasons that match your search.
 
@@ -336,7 +336,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all stages available within your subscription
 
@@ -359,7 +359,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns stage information from your requested stage ID.
 
@@ -388,7 +388,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns stage information from your requested stage ID.
 
@@ -417,7 +417,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all stages that matches your search.
 
@@ -440,7 +440,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the rounds available within your subscription.
 
@@ -463,7 +463,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns round information from your requested round ID.
 
@@ -490,7 +490,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns round information from your requested round ID.
 
@@ -517,7 +517,7 @@ class LeaguesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all stages that matches your search
 

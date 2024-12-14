@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Union
 
 from sportmonks_py.base_client import BaseClient
 from sportmonks_py.utils.common_types import Includes, Selects, Filters, StdResponse, AsyncResponse
@@ -24,7 +24,7 @@ class StandingsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all standings
 
@@ -48,7 +48,7 @@ class StandingsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the full league standing table from your requested season ID.
 
@@ -76,7 +76,7 @@ class StandingsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the full league standing table from your requested round ID.
 
@@ -104,7 +104,7 @@ class StandingsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
             async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the standing corrections from your requested season ID.
 
@@ -132,7 +132,7 @@ class StandingsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the LIVE league standing table from your requested league ID.
 
@@ -160,7 +160,7 @@ class StandingsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all the topscorers per stage of the requested season
 
@@ -188,7 +188,7 @@ class StandingsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all the topscorers from your requested stage ID.
 

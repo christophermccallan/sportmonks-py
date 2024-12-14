@@ -25,7 +25,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve all fixtures from the SportMonks database.
 
@@ -48,7 +48,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve specific fixtures by their IDs.
 
@@ -89,7 +89,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve fixtures for a specific date or date range.
 
@@ -135,7 +135,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve head-to-head fixtures for two teams.
 
@@ -164,7 +164,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Search fixtures by string or int.
 
@@ -188,7 +188,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve upcoming fixtures for a specific market.
 
@@ -212,7 +212,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve upcoming fixtures for a specific TV station.
 
@@ -235,7 +235,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve fixtures updated within the last 10 seconds.
 
@@ -257,7 +257,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         GET All Inplay Livescores: returns all the inplay fixtures.
 
@@ -279,7 +279,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the fixtures 15 minutes before the game starts. It will also disappear 15 minutes after the game is finished.
 
@@ -301,7 +301,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns you all livescores that have received updates within 10 seconds.
 

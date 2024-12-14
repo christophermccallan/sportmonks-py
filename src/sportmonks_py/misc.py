@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Union
 
 from .base_client import BaseClient
 from .utils.common_types import Includes, Selects, Filters, StdResponse, AsyncResponse
@@ -24,7 +24,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all the available pre-match news articles within your subscription
 
@@ -48,7 +48,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all pre-match news articles from your requested season ID.
 
@@ -75,7 +75,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all pre-match news articles for the upcoming fixtures within your subscription.
 
@@ -98,7 +98,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all the available post-match news articles within your subscription.
 
@@ -122,7 +122,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all post-match news articles from your requested season ID.
 
@@ -149,7 +149,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all the teams within your subscription with the rivals information (if available).
 
@@ -173,7 +173,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns the rivals of your requested team ID (if available).
 
@@ -199,7 +199,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns a textual representation of commentaries
 
@@ -223,7 +223,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> StdResponse | AsyncResponse:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         RReturns a textual representation from the requested fixture ID.
 
