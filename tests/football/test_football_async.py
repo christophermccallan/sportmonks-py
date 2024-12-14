@@ -1,6 +1,5 @@
 import os
 import pytest
-from unittest.mock import patch
 from sportmonks_py import APIClient
 
 @pytest.fixture
