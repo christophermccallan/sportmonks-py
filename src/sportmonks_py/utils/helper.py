@@ -44,7 +44,9 @@ def validate_date_order(date1: str, date2: str) -> bool:
     return True
 
 
-def validate_search_params(params: Optional[set[str]], allowed_params: set[str]) -> None:
+def validate_search_params(
+    params: Optional[set[str]], allowed_params: set[str]
+) -> None:
     """
     Validate that all elements in `includes` are within the `allowed_includes` set.
 

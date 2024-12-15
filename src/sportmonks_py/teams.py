@@ -1,7 +1,7 @@
-from typing import  Any, Iterator, Optional, Iterable
+from typing import Optional, Union
 
 from sportmonks_py.base_client import BaseClient
-from sportmonks_py.utils.common_types import Includes, Selects, Filters
+from .utils.common_types import Includes, Selects, Filters, StdResponse, AsyncResponse
 
 
 class TeamsClient(BaseClient):
@@ -28,7 +28,7 @@ class TeamsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> Iterable[Iterator[dict[str, Any]]]:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve team information based on various criteria.
 
@@ -81,7 +81,7 @@ class TeamsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> Iterable[Iterator[dict[str, Any]]]:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve player information based on various criteria.
 
@@ -124,7 +124,7 @@ class TeamsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> Iterable[Iterator[dict[str, Any]]]:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve all players updated within the last two hours.
 
@@ -135,7 +135,7 @@ class TeamsClient(BaseClient):
         :return: Iterator of player data.
         """
         return self._get(
-            "players/updated",
+            "players/latest",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
         )
@@ -149,7 +149,7 @@ class TeamsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> Iterable[Iterator[dict[str, Any]]]:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve coach information based on various criteria.
 
@@ -192,7 +192,7 @@ class TeamsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> Iterable[Iterator[dict[str, Any]]]:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve all coaches updated within the last two hours.
 
@@ -216,7 +216,7 @@ class TeamsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> Iterable[Iterator[dict[str, Any]]]:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve a team's squad for a specific season.
 
@@ -250,7 +250,7 @@ class TeamsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-    ) -> Iterable[Iterator[dict[str, Any]]]:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve referee information based on various criteria.
 

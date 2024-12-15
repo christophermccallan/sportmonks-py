@@ -190,7 +190,8 @@ class OtherClient(BaseClient):
 
         return self._get(
             f"teams/rivals/{team_id}",
-            params={"include": includes, "select": selects, "filter": filters}, async_mode=async_mode
+            params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
         )
 
     def get_commentaries(

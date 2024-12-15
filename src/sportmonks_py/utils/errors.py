@@ -4,6 +4,12 @@ class ApiTokenMissingError(Exception):
     pass
 
 
+class MalformedResponseError(Exception):
+    """Raised when the response from the API does not contain 'data'."""
+
+    pass
+
+
 class BaseUrlMissingError(Exception):
     """Raised when base url is not provided."""
 

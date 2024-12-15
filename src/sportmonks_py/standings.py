@@ -1,7 +1,13 @@
 from typing import Optional, Union
 
 from sportmonks_py.base_client import BaseClient
-from sportmonks_py.utils.common_types import Includes, Selects, Filters, StdResponse, AsyncResponse
+from sportmonks_py.utils.common_types import (
+    Includes,
+    Selects,
+    Filters,
+    StdResponse,
+    AsyncResponse,
+)
 
 
 class StandingsClient(BaseClient):
@@ -103,7 +109,7 @@ class StandingsClient(BaseClient):
         includes: Optional[Includes] = None,
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
-            async_mode: bool = False,
+        async_mode: bool = False,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the standing corrections from your requested season ID.

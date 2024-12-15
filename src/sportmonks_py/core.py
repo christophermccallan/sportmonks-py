@@ -17,7 +17,9 @@ class CoreClient(BaseClient):
         """
         super().__init__(base_url=base_url, api_token=api_token)
 
-    def get_all_cities(self, async_mode: bool = False) -> Union[StdResponse,AsyncResponse]:
+    def get_all_cities(
+        self, async_mode: bool = False
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all available filters for the entities.
         :param async_mode: Whether to use async mode.
@@ -28,7 +30,7 @@ class CoreClient(BaseClient):
 
     def get_city_by_id(
         self, city_id: int, async_mode: bool = False
-    ) -> Union[StdResponse,AsyncResponse]:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns a city by its ID.
 
@@ -40,7 +42,7 @@ class CoreClient(BaseClient):
 
     def search_cities(
         self, search: str, async_mode: bool = False
-    ) -> Union[StdResponse,AsyncResponse]:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all available filters for the entities.
         :param search: Search string to search for.
@@ -52,7 +54,7 @@ class CoreClient(BaseClient):
 
     def get_all_continents(
         self, async_mode: bool = False
-    ) -> Union[StdResponse,AsyncResponse]:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all available filters for the entities.
         :param async_mode: Whether to use async mode.
@@ -63,7 +65,7 @@ class CoreClient(BaseClient):
 
     def get_continent_by_id(
         self, continent_id: int, async_mode: bool = False
-    ) -> Union[StdResponse,AsyncResponse]:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns a continent by its ID.
 
@@ -75,7 +77,7 @@ class CoreClient(BaseClient):
 
     def get_all_countries(
         self, async_mode: bool = False
-    ) -> Union[StdResponse,AsyncResponse]:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all available filters for the entities.
         :param async_mode: Whether to use async mode.
@@ -86,7 +88,7 @@ class CoreClient(BaseClient):
 
     def get_country_by_id(
         self, country_id: int, async_mode: bool = False
-    ) -> Union[StdResponse,AsyncResponse]:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns a country by its ID.
 
@@ -98,7 +100,7 @@ class CoreClient(BaseClient):
 
     def search_countries(
         self, search: str, async_mode: bool = False
-    ) -> Union[StdResponse,AsyncResponse]:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all available filters for the entities.
         :param search: string to search for.
@@ -107,7 +109,9 @@ class CoreClient(BaseClient):
         """
         return self._get(f"core/countries/search/{search}", async_mode=async_mode)
 
-    def get_all_regions(self, async_mode: bool = False) -> Union[StdResponse,AsyncResponse]:
+    def get_all_regions(
+        self, async_mode: bool = False
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all available filters for the entities.
 
@@ -117,7 +121,7 @@ class CoreClient(BaseClient):
 
     def get_region_by_id(
         self, region_id: int, async_mode: bool = False
-    ) -> Union[StdResponse,AsyncResponse]:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns a region by its ID.
 
@@ -129,7 +133,7 @@ class CoreClient(BaseClient):
 
     def search_regions(
         self, search: str, async_mode: bool = False
-    ) -> Union[StdResponse,AsyncResponse]:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all available filters for the entities.
         :param search: string to search for.
@@ -138,7 +142,9 @@ class CoreClient(BaseClient):
         """
         return self._get(f"core/regions/search/{search}", async_mode=async_mode)
 
-    def get_all_types(self, async_mode: bool = False) -> Union[StdResponse,AsyncResponse]:
+    def get_all_types(
+        self, async_mode: bool = False
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all available filters  for the entities.
         :param async_mode: Whether to use async mode.
@@ -148,7 +154,7 @@ class CoreClient(BaseClient):
 
     def get_type_by_id(
         self, type_id: int, async_mode: bool = False
-    ) -> Union[StdResponse,AsyncResponse]:
+    ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns a type by its ID.
 
