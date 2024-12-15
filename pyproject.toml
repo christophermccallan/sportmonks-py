@@ -15,7 +15,6 @@ dependencies = [
     "asyncio>=3.4.3",
     "datetime>=5.5",
     "http-client>=0.1.22",
-    "logging>=0.4.9.6",
     "pytest-asyncio>=0.25.0",
     "pytest>=8.3.3",
     "pytz>=2024.2",
