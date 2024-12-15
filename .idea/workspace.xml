@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c15499be-5773-4fe6-a507-17bd43cfaaa9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.readthedocs.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.readthedocs.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/docs/conf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Changelog.md" beforeDir="false" afterPath="$PROJECT_DIR$/Changelog.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +48,7 @@
     "Python tests.test_football_fixtures.py.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "update-readthedocs",
+    "git-widget-placeholder": "version-bump",
     "last_opened_file_path": "/Users/chrismccallan/Repositories/packages/sportmonks-py",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }

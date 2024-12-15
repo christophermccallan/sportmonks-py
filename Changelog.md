@@ -1,5 +1,9 @@
 # Change log
 
+[0.0.4] 15/12/2024
+**Changes**
+- Improves readthedocs support file and corresponding documentation
+
 [0.0.3] - 15/12/2024
 **New**
 - Adds readthedocs support file
