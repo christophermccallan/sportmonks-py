@@ -32,6 +32,11 @@ For brevity and ease of use, entities have been mapped to a shortened keyword as
 | Odd and Prediction | odds         |
 | Other | misc         |
 
+### Documentation
+Full documentation can be found at [ReadTheDocs](https://sportmonks-py.readthedocs.io/en/latest/)
+
+#### Examples
+
 Filtering
 
 The SportMonks API allows for filtering of data using query parameters. Below is an example of how to filter data using the SportMonks API.
