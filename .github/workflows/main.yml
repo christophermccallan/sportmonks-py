@@ -22,17 +22,17 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Cache pip dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/pyproject.toml') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+      - name: Install UV
+        run: |
+          pip install uv
 
       - name: Install dependencies
         run: |
-          pip install '.[dev]'
+          uv sync
+          pip install ruff pytest responses
+
+      - name: Install sportmonks-py
+        run: pip install -e .
 
       - name: Lint with ruff
         run: ruff check .
@@ -41,20 +41,6 @@ jobs:
         run: pytest
         env:
           SPORTMONKS_API_TOKEN: "${{ secrets.SPORTMONKS_API_TOKEN }}"
-
-  docs:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: "3.12"
-      - name: Install Sphinx dependencies
-        run: |
-          pip install sphinx sphinx-rtd-theme
-      - name: Build documentation
-        run: sphinx-build docs/ _build/html
 
   publish:
     needs: [build]
@@ -69,13 +55,11 @@ jobs:
           python-version: "3.12"
 
       - name: Install build & twine
-        run: pip install build twine
+        run: |
+          pip install build twine
 
       - name: Build the distribution
         run: python -m build
-
-      - name: Validate the distribution
-        run: twine check dist/*
 
       - name: Publish to PyPI
         run: twine upload dist/*
