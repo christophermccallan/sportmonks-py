@@ -33,7 +33,7 @@ For brevity and ease of use, entities have been mapped to a shortened keyword as
 | Other | misc         |
 
 ### Documentation
-Full documentation can be found at [ReadTheDocs](https://sportmonks-py.readthedocs.io/en/latest/)
+Full documentation can be found at [ReadTheDocs](https://sportmonks-py.readthedocs.io/en/stable/)
 
 #### Examples
 
