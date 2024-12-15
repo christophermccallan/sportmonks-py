@@ -4,7 +4,11 @@ import urllib.parse
 import aiohttp
 from typing import Dict, Iterable, Any, Optional, AsyncIterator, Union, Iterator
 
-from sportmonks_py.utils.errors import status_code_to_exception, ApiTokenMissingError
+from sportmonks_py.utils.errors import (
+    status_code_to_exception,
+    ApiTokenMissingError,
+    MalformedResponseError,
+)
 from sportmonks_py.utils.common_types import Includes, Response, Selects, Filters
 
 
@@ -46,7 +50,9 @@ class BaseClient:
                 response_data = self._make_request(url)
                 yield response_data["data"]
                 pagination = response_data.get("pagination", {})
-                url = pagination.get("next_page") if pagination.get("has_more") else None
+                url = (
+                    pagination.get("next_page") if pagination.get("has_more") else None
+                )
             except Exception as e:
                 raise ValueError(f"Error processing URL {url}: {e}")
 
@@ -60,9 +66,13 @@ class BaseClient:
                 response_data = await self._make_request_async(url)
                 yield response_data["data"]
                 pagination = response_data.get("pagination", {})
-                url = pagination.get("next_page") if pagination.get("has_more") else None
+                url = (
+                    pagination.get("next_page") if pagination.get("has_more") else None
+                )
             except Exception as e:
-                raise ValueError(f"Error processing URL {url}: {e}")
+                raise MalformedResponseError(
+                    f"Error in endpoint response, missing : {e} from {url}. Re-check the requested parameters"
+                )
 
     def _make_request(self, url: str) -> Dict[str, Any]:
         parsed_url = urllib.parse.urlparse(url)

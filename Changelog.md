@@ -1,5 +1,10 @@
 # Change log
 
+[0.0.3] - 15/12/2024
+**New**
+- Adds readthedocs support file
+- Improves responses for malformed requests
+
 [0.0.2] - 14/12/2024
 **New**
 

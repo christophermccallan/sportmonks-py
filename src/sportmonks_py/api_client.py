@@ -16,4 +16,6 @@ class SportMonksClient(BaseClient):
         super().__init__(base_url=base_url, api_token=api_token)
         self.client = APIClient(sport=sport, api_token=api_token)
 
-        logging.getLogger("sportmonks-py").info(f"Initialized SportMonksClient with sport: {sport}").addHandler(logging.NullHandler())
+        logging.getLogger("sportmonks-py").info(
+            f"Initialized SportMonksClient with sport: {sport}"
+        ).addHandler(logging.NullHandler())
