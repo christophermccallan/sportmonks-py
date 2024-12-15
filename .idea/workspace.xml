@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c15499be-5773-4fe6-a507-17bd43cfaaa9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/docs/conf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/core.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/core.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/fixture.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/fixture.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/leagues.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/leagues.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/misc.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/misc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/my.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/my.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/teams.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/teams.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/utils/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/utils/helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/utils/helper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +48,7 @@
     "Python tests.test_football_fixtures.py.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "doc-fixes",
+    "git-widget-placeholder": "sphinx-fix",
     "last_opened_file_path": "/Users/chrismccallan/Repositories/packages/sportmonks-py",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
@@ -128,9 +121,9 @@
     </configuration>
     <list>
       <item itemvalue="Compound.sportmonks-py" />
-      <item itemvalue="Python tests.pytest in test_football.py" />
-      <item itemvalue="Python tests.async-tests" />
       <item itemvalue="Python tests.Python tests for test_football.test_fixture_odds" />
+      <item itemvalue="Python tests.async-tests" />
+      <item itemvalue="Python tests.pytest in test_football.py" />
     </list>
     <recent_temporary>
       <list>

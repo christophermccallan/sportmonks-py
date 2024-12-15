@@ -22,6 +22,8 @@ dependencies = [
     "responses>=0.25.3",
     "ruff>=0.8.2",
     "tzlocal>=5.2",
+    "sphinx-rtd-theme>=3.0.2",
+    "sphinx>=7.4.7",
 ]
 
 [dependency-groups]
