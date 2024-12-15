@@ -1,8 +1,4 @@
 from datetime import datetime
-from typing import Optional
-
-from .errors import InvalidIncludes
-
 
 def validate_date_format(date_str: str) -> bool:
     """
@@ -42,23 +38,6 @@ def validate_date_order(date1: str, date2: str) -> bool:
         return False
 
     return True
-
-
-def validate_search_params(
-    params: Optional[set[str]], allowed_params: set[str]
-) -> None:
-    """
-    Validate that all elements in `includes` are within the `allowed_includes` set.
-
-    :param params: A set of requested includes to validate.
-    :param allowed_params: The set of allowed includes.
-    :raises InvalidIncludes: If any includes are invalid.
-    """
-    if params and not params.issubset(allowed_params):
-        invalid_includes = params - allowed_params
-        raise InvalidIncludes(
-            f"Invalid includes: {invalid_includes}. Allowed includes: {allowed_params}"
-        )
 
 
 def validate_positive_id(value: int, name: str) -> None:

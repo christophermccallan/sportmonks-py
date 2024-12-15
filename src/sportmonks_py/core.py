@@ -1,5 +1,5 @@
 from typing import Union
-from .utils.common_types import StdResponse, AsyncResponse
+from sportmonks_py.utils.common_types import StdResponse, AsyncResponse
 from sportmonks_py.base_client import BaseClient
 
 
