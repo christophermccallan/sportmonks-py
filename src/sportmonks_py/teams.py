@@ -1,7 +1,7 @@
 from typing import Optional, Union
 
 from sportmonks_py.base_client import BaseClient
-from .utils.common_types import Includes, Selects, Filters, StdResponse, AsyncResponse
+from sportmonks_py.utils.common_types import Includes, Selects, Filters, StdResponse, AsyncResponse
 
 
 class TeamsClient(BaseClient):
