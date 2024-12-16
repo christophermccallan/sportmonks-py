@@ -1,6 +1,6 @@
 from typing import Optional, Union
 
-from sportmonks_py.base_client import BaseClient
+from sportmonks_py.client.base_client import BaseClient
 from sportmonks_py.utils.common_types import (
     Includes,
     Selects,
@@ -30,6 +30,7 @@ class OddsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve all available pre-match odds.
@@ -38,12 +39,15 @@ class OddsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over pre-match odds data.
+        :param locale: Locale to use for the response.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             "odds/pre-match",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_fixture_prematch_odds(
@@ -55,6 +59,7 @@ class OddsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve pre-match odds for a specific fixture. Optionally filter by bookmaker or market.
@@ -66,24 +71,29 @@ class OddsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over pre-match odds data.
+        :param locale: Locale to use for the response.
+
+        :return: StdResponse | AsyncResponse
         """
         if bookmaker_id:
             return self._get(
                 f"odds/pre-match/fixtures/{fixture_id}/bookmakers/{bookmaker_id}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
             )
         if market_id:
             return self._get(
                 f"odds/pre-match/fixtures/{fixture_id}/markets/{market_id}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
             )
         return self._get(
             f"odds/pre-match/fixtures/{fixture_id}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_latest_prematch_odds(
@@ -92,6 +102,7 @@ class OddsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve pre-match odds for fixtures updated within the last 10 seconds.
@@ -100,12 +111,15 @@ class OddsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over updated pre-match odds data.
+        :param locale: Locale to use for the response.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             "odds/pre-match/latest",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_all_inplay_odds(
@@ -114,6 +128,7 @@ class OddsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve all available in-play odds.
@@ -122,12 +137,15 @@ class OddsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over in-play odds data.
+        :param locale: Locale to use for the response.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             "odds/inplay",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_fixture_inplay_odds(
@@ -139,6 +157,7 @@ class OddsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve in-play odds for a specific fixture. Optionally filter by bookmaker or market.
@@ -150,24 +169,29 @@ class OddsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over in-play odds data.
+        :param locale: Locale to use for the response.
+
+        :return: StdResponse | AsyncResponse
         """
         if bookmaker_id:
             return self._get(
                 f"odds/inplay/fixtures/{fixture_id}/bookmakers/{bookmaker_id}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
             )
         if market_id:
             return self._get(
                 f"odds/inplay/fixtures/{fixture_id}/markets/{market_id}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
             )
         return self._get(
             f"odds/inplay/fixtures/{fixture_id}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_latest_inplay_odds(
@@ -176,6 +200,7 @@ class OddsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve in-play odds for fixtures updated within the last 10 seconds.
@@ -184,12 +209,15 @@ class OddsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over updated in-play odds data.
+        :param locale: Locale to use for the response.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             "odds/inplay/latest",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_premium_fixture_prematch_odds(
@@ -201,6 +229,7 @@ class OddsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve pre-match odds for a specific fixture from the Premium feed.
@@ -216,22 +245,27 @@ class OddsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over Premium pre-match odds data.
+        :param locale: Locale to use for the response.
+
+        :return: StdResponse | AsyncResponse
         """
         if bookmaker_id:
             return self._get(
                 f"odds/premium/pre-match/fixtures/{fixture_id}/bookmakers/{bookmaker_id}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
             )
         if market_id:
             return self._get(
                 f"odds/premium/pre-match/fixtures/{fixture_id}/markets/{market_id}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
             )
         return self._get(
             f"odds/premium/pre-match/fixtures/{fixture_id}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )

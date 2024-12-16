@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 def validate_date_format(date_str: str) -> bool:
     """
     Validates if the provided date is in the format 'YYYY-mm-dd' that SportMonks requires.

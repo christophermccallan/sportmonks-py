@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="sportmonks-py" type="CompoundRunConfigurationType">
+    <toRun name="test_football.py" type="tests" />
+    <method v="2" />
+  </configuration>
+</component>

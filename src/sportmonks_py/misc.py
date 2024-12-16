@@ -1,7 +1,13 @@
 from typing import Optional, Union
 
-from sportmonks_py.base_client import BaseClient
-from sportmonks_py.utils.common_types import Includes, Selects, Filters, StdResponse, AsyncResponse
+from sportmonks_py.client.base_client import BaseClient
+from sportmonks_py.utils.common_types import (
+    Includes,
+    Selects,
+    Filters,
+    StdResponse,
+    AsyncResponse,
+)
 
 
 class OtherClient(BaseClient):
@@ -24,6 +30,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all the available pre-match news articles within your subscription
@@ -32,13 +39,16 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+        :param locale: Locale to use for the response.
+
+        :return: StdResponse | AsyncResponse
         """
 
         return self._get(
             "news/prematch",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_prematch_news_by_season(
@@ -48,6 +58,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all pre-match news articles from your requested season ID.
@@ -57,7 +68,11 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+        :param locale: Locale to use for the response.
+
+        :return: StdResponse | AsyncResponse
+
+        :raises ValueError: If season_id is not provided.
         """
 
         if not season_id:
@@ -67,6 +82,7 @@ class OtherClient(BaseClient):
             f"news/prematch/seasons/{season_id}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_upcoming_prematch_news(
@@ -75,6 +91,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all pre-match news articles for the upcoming fixtures within your subscription.
@@ -83,13 +100,16 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+        :param locale: Locale to use for the response.
+
+        :return: StdResponse | AsyncResponse
         """
 
         return self._get(
             "news/prematch/upcoming",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_postmatch_news(
@@ -98,6 +118,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all the available post-match news articles within your subscription.
@@ -106,13 +127,16 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+        :param locale: Locale to use for the response.
+
+        :return: StdResponse | AsyncResponse
         """
 
         return self._get(
             "news/postmatch",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_postmatch_news_by_season(
@@ -122,6 +146,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all post-match news articles from your requested season ID.
@@ -131,7 +156,11 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+        :param locale: Locale to use for the response.
+
+        :return: StdResponse | AsyncResponse
+
+        :raises ValueError: If season_id is not provided.
         """
 
         if not season_id:
@@ -141,6 +170,7 @@ class OtherClient(BaseClient):
             f"news/postmatch/seasons/{season_id}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_rivals(
@@ -149,6 +179,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all the teams within your subscription with the rivals information (if available).
@@ -157,7 +188,9 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+        :param locale: Locale to use for the response.
+
+        :return: StdResponse | AsyncResponse
         """
 
         return self._get(
@@ -173,6 +206,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns the rivals of your requested team ID (if available).
@@ -182,7 +216,11 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+        :param locale: Locale to use for the response.
+
+        :return: StdResponse | AsyncResponse
+
+        :raises ValueError: If team_id is not provided.
         """
 
         if not team_id:
@@ -192,6 +230,7 @@ class OtherClient(BaseClient):
             f"teams/rivals/{team_id}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_commentaries(
@@ -200,6 +239,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns a textual representation of commentaries
@@ -208,13 +248,16 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+        :param locale: Locale to use for the response.
+
+        :return: StdResponse | AsyncResponse
         """
 
         return self._get(
             "commentaries",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_fixture_commentary(
@@ -224,6 +267,7 @@ class OtherClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         RReturns a textual representation from the requested fixture ID.
@@ -233,7 +277,11 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+        :param locale: Locale to use for the response.
+
+        :return: StdResponse | AsyncResponse
+
+        :raises ValueError: If fixture_id is not provided.
         """
 
         if not fixture_id:
@@ -243,4 +291,5 @@ class OtherClient(BaseClient):
             "commentaries",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )

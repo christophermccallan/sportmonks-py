@@ -444,12 +444,6 @@ wheels = [
 ]
 
 [[package]]
-name = "logging"
-version = "0.4.9.6"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/93/4b/979db9e44be09f71e85c9c8cfc42f258adfb7d93ce01deed2788b2948919/logging-0.4.9.6.tar.gz", hash = "sha256:26f6b50773f085042d301085bd1bf5d9f3735704db9f37c1ce6d8b85c38f2417", size = 96029 }
-
-[[package]]
 name = "markupsafe"
 version = "3.0.2"
 source = { registry = "https://pypi.org/simple" }
@@ -1039,14 +1033,13 @@ wheels = [
 
 [[package]]
 name = "sportmonks-py"
-version = "0.0.3"
+version = "0.0.4"
 source = { editable = "." }
 dependencies = [
     { name = "aiohttp" },
     { name = "asyncio" },
     { name = "datetime" },
     { name = "http-client" },
-    { name = "logging" },
     { name = "pytest" },
     { name = "pytest-asyncio" },
     { name = "pytz" },
@@ -1068,7 +1061,6 @@ requires-dist = [
     { name = "asyncio", specifier = ">=3.4.3" },
     { name = "datetime", specifier = ">=5.5" },
     { name = "http-client", specifier = ">=0.1.22" },
-    { name = "logging", specifier = ">=0.4.9.6" },
     { name = "pytest", specifier = ">=8.3.3" },
     { name = "pytest-asyncio", specifier = ">=0.25.0" },
     { name = "pytz", specifier = ">=2024.2" },

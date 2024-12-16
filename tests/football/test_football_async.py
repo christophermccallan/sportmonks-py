@@ -1,6 +1,6 @@
 import os
 import pytest
-from sportmonks_py import APIClient
+from sportmonks_py.client import APIClient
 
 
 @pytest.fixture
