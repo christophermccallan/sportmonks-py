@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c15499be-5773-4fe6-a507-17bd43cfaaa9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/examples/get_fixtures.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/get_fixtures.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/search_leagues.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/search_leagues.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/client/base_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/client/base_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/football/test_football.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/football/test_football.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +51,7 @@
     "Python.test_football.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "add-examples",
+    "git-widget-placeholder": "version-bump",
     "last_opened_file_path": "/Users/chrismccallan/Repositories/packages/sportmonks-py",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable"
   }
@@ -155,8 +152,8 @@
     <list>
       <item itemvalue="Compound.sportmonks-py" />
       <item itemvalue="Python.test_football" />
-      <item itemvalue="Python tests.test_football_async" />
       <item itemvalue="Python tests.test_core" />
+      <item itemvalue="Python tests.test_football_async" />
       <item itemvalue="Python tests.test_football.py" />
     </list>
     <recent_temporary>
