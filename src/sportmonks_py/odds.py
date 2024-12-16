@@ -1,7 +1,7 @@
 from typing import Optional, Union
 
-from .client.base_client import BaseClient
-from .utils.common_types import (
+from sportmonks_py.client.base_client import BaseClient
+from sportmonks_py.utils.common_types import (
     Includes,
     Selects,
     Filters,

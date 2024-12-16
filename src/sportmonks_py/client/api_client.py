@@ -5,7 +5,6 @@ from sportmonks_py.clients.base_client import BaseClient
 from sportmonks_py.clients.api_client import APIClient
 
 
-
 class SportMonksClient(BaseClient):
     def __init__(self, sport: str, api_token: str):
         """

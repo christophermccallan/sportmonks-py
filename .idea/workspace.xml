@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c15499be-5773-4fe6-a507-17bd43cfaaa9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/docs/conf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/api_client.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/base_client.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/client/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/client/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sportmonks_py/core.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/core.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sportmonks_py/fixture.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/fixture.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sportmonks_py/leagues.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/leagues.py" afterDir="false" />
@@ -18,12 +14,8 @@
       <change beforePath="$PROJECT_DIR$/src/sportmonks_py/my.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/my.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sportmonks_py/odds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/odds.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sportmonks_py/standings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/standings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/statistics.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/statistics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sportmonks_py/teams.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/teams.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/utils/common_types.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/utils/common_types.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/utils/helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/utils/helper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/core/test_core.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/core/test_core.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/football/test_football.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/football/test_football.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/football/test_football_async.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/football/test_football_async.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +74,7 @@
       <recent name="$PROJECT_DIR$/tests/football" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.test_football.py">
+  <component name="RunManager" selected="Python tests.test_core">
     <configuration name="test_football" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="sportmonks-py" />
       <option name="ENV_FILES" value="" />

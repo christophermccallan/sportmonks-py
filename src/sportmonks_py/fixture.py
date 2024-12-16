@@ -1,8 +1,14 @@
 from typing import Union, List, Optional
-from .client.base_client import BaseClient
-from .utils.errors import ParameterLengthException, InvalidDateFormat
-from .utils.helper import validate_date_format, validate_date_order
-from .utils.common_types import Includes, Selects, Filters, StdResponse, AsyncResponse
+from sportmonks_py.client.base_client import BaseClient
+from sportmonks_py.utils.errors import ParameterLengthException, InvalidDateFormat
+from sportmonks_py.utils.helper import validate_date_format, validate_date_order
+from sportmonks_py.utils.common_types import (
+    Includes,
+    Selects,
+    Filters,
+    StdResponse,
+    AsyncResponse,
+)
 
 
 class FixturesClient(BaseClient):

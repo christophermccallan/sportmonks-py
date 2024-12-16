@@ -1,11 +1,11 @@
-from ..utils.config import Config
-from ..fixture import FixturesClient
-from ..teams import TeamsClient
-from ..odds import OddsClient
-from ..leagues import LeaguesClient
-from ..standings import StandingsClient
-from ..misc import OtherClient
-from ..core import CoreClient
+from sportmonks_py.utils.config import Config
+from sportmonks_py.fixture import FixturesClient
+from sportmonks_py.teams import TeamsClient
+from sportmonks_py.odds import OddsClient
+from sportmonks_py.leagues import LeaguesClient
+from sportmonks_py.standings import StandingsClient
+from sportmonks_py.misc import OtherClient
+from sportmonks_py.core import CoreClient
 
 
 class APIClient:
