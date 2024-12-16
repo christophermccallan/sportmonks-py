@@ -21,14 +21,14 @@ class BaseClient:
         self.api_token = api_token
 
     def _get(
-            self,
-            endpoint: str,
-            params: Optional[Dict[str, Any]] = None,
-            includes: Optional[Includes] = None,
-            selects: Optional[Selects] = None,
-            filters: Optional[Filters] = None,
-            async_mode: bool = False,
-            locale: Optional[str] = None,
+        self,
+        endpoint: str,
+        params: Optional[Dict[str, Any]] = None,
+        includes: Optional[Includes] = None,
+        selects: Optional[Selects] = None,
+        filters: Optional[Filters] = None,
+        async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[Iterable[Response], AsyncIterator[Response]]:
         """
         If async_mode=False, returns a synchronous iterator over API results.
@@ -107,13 +107,13 @@ class BaseClient:
                 return json.loads(response_content.decode("utf-8"))
 
     def _build_url(
-            self,
-            endpoint: str,
-            params: Optional[Dict[str, Any]],
-            includes: Optional[Includes],
-            selects: Optional[Selects],
-            filters: Optional[Filters],
-            locale: Optional[str] = None,
+        self,
+        endpoint: str,
+        params: Optional[Dict[str, Any]],
+        includes: Optional[Includes],
+        selects: Optional[Selects],
+        filters: Optional[Filters],
+        locale: Optional[str] = None,
     ) -> str:
         params = params or {}
 
