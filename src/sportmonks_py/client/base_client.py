@@ -50,7 +50,11 @@ class BaseClient:
         while url:
             try:
                 response_data = self._make_request(url)
-                yield response_data["data"]
+                message = response_data.get("message")
+                if message:
+                    yield {"message": message}
+                else:
+                    yield response_data["data"]
                 pagination = response_data.get("pagination", {})
                 url = (
                     pagination.get("next_page") if pagination.get("has_more") else None
@@ -66,7 +70,11 @@ class BaseClient:
         while url:
             try:
                 response_data = await self._make_request_async(url)
-                yield response_data["data"]
+                message = response_data.get("message")
+                if message:
+                    yield {"message": message}
+                else:
+                    yield response_data["data"]
                 pagination = response_data.get("pagination", {})
                 url = (
                     pagination.get("next_page") if pagination.get("has_more") else None

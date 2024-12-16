@@ -93,3 +93,10 @@ def test_get_player_by_search(client):
     players = client.teams.get_players(search="Salah")
     for player in players:
         assert player[0]["display_name"] == "Mohamed Salah"
+
+
+@responses.activate
+def test_get_league_by_search(client):
+    leagues = client.leagues.search_leagues(search="Liverpool")
+    for league in leagues:
+        assert "No result(s)" in league["message"]
