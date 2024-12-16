@@ -28,10 +28,12 @@ class BaseClient:
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+            locale: Optional[str] = None,
     ) -> Union[Iterable[Response], AsyncIterator[Response]]:
         """
         If async_mode=False, returns a synchronous iterator over API results.
         If async_mode=True, returns an asynchronous iterator over API results.
+        Locale defaults to English if not selected or an invalid locale is provided.
         """
         url = self._build_url(endpoint, params, includes, selects, filters)
 
@@ -103,6 +105,7 @@ class BaseClient:
         includes: Optional[Includes],
         selects: Optional[Selects],
         filters: Optional[Filters],
+        locale: Optional[str] = None,
     ) -> str:
         params = params or {}
 
@@ -112,6 +115,8 @@ class BaseClient:
             params["select"] = json.dumps(selects, separators=(",", ":"))
         if filters:
             params.update({f"filter[{k}]": v for k, v in filters.items()})
+        if locale:
+            params.update({"locale": locale})
 
         params = {k: v for k, v in params.items() if v}
 

@@ -38,7 +38,8 @@ class StandingsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
         """
 
         return self._get(
@@ -63,7 +64,10 @@ class StandingsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
+
+        :raises ValueError: If season_id is not provided.
         """
 
         if not season_id:
@@ -91,7 +95,10 @@ class StandingsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
+
+        :raises ValueError: If round_id is not provided.
         """
 
         if not round_id:
@@ -119,7 +126,10 @@ class StandingsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
+
+        :raises ValueError: If season_id is not provided.
         """
 
         if not season_id:
@@ -147,7 +157,10 @@ class StandingsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
+
+        :raises ValueError: If league_id is not provided.
         """
 
         if not league_id:
@@ -175,7 +188,10 @@ class StandingsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
+
+        :raises ValueError: If season_id is not provided.
         """
 
         if not season_id:
@@ -203,7 +219,10 @@ class StandingsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
+
+        :raises ValueError: If stage_id is not provided.
         """
 
         if not stage_id:

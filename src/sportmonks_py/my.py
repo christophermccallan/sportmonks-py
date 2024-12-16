@@ -25,7 +25,7 @@ class MyClient(BaseClient):
         This endpoint returns all available enrichments for the entities.
         :param async_mode: Whether to use async mode.
 
-        :return: Dictionary of enrichments.
+        :return: StdResponse | AsyncResponse
         """
         return self._get("my/enrichments", async_mode=async_mode)
 
@@ -37,7 +37,7 @@ class MyClient(BaseClient):
         This endpoint returns all available leagues for the entities.
         :param async_mode: Whether to use async mode.
 
-        :return: Dictionary of leagues.
+        :return: StdResponse | AsyncResponse
         """
         return self._get("my/leagues", async_mode=async_mode)
 
@@ -49,6 +49,6 @@ class MyClient(BaseClient):
         This endpoint returns all available resources for the entities.
         :param async_mode: Whether to use async mode.
 
-        :return: Dictionary of resources.
+        :return: StdResponse | AsyncResponse
         """
         return self._get("my/resources", async_mode=async_mode)

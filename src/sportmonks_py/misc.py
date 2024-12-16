@@ -32,7 +32,8 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
         """
 
         return self._get(
@@ -57,7 +58,10 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
+
+        :raises ValueError: If season_id is not provided.
         """
 
         if not season_id:
@@ -83,7 +87,8 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
         """
 
         return self._get(
@@ -106,7 +111,8 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
         """
 
         return self._get(
@@ -131,7 +137,10 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
+
+        :raises ValueError: If season_id is not provided.
         """
 
         if not season_id:
@@ -157,7 +166,8 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
         """
 
         return self._get(
@@ -182,7 +192,10 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
+
+        :raises ValueError: If team_id is not provided.
         """
 
         if not team_id:
@@ -208,7 +221,8 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
         """
 
         return self._get(
@@ -233,7 +247,10 @@ class OtherClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
+
+        :raises ValueError: If fixture_id is not provided.
         """
 
         if not fixture_id:

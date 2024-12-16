@@ -33,7 +33,8 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             "fixtures",
@@ -57,7 +58,9 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
+
         :raises ValueError: If no fixture IDs are provided.
         :raises ParameterLengthException: If more than 50 fixture IDs are provided.
         """
@@ -100,7 +103,9 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
+
         :raises InvalidDateFormat: If a date is in an invalid format.
         :raises ValueError: If the start date is after the end date.
         """
@@ -145,7 +150,9 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
+
         :raises ValueError: If team IDs are not positive integers.
         """
         if team1 <= 0 or team2 <= 0:
@@ -173,7 +180,8 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             f"fixtures/search/{search}",
@@ -197,7 +205,8 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             f"fixtures/upcoming/markets/{market_id}",
@@ -221,7 +230,8 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             f"fixtures/upcoming/tv-stations/{station_id}",
@@ -243,7 +253,8 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             "fixtures/latest",
@@ -265,7 +276,8 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             "fixtures/livescores/inplay",
@@ -287,7 +299,8 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             "fixtures/livescores",
@@ -309,7 +322,8 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
-        :return: Iterator over fixture data.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             "fixtures/livescores/latest",

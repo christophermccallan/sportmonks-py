@@ -24,7 +24,7 @@ class CoreClient(BaseClient):
         This endpoint returns all available filters for the entities.
         :param async_mode: Whether to use async mode.
 
-        :return: Dictionary of filters.
+        :return: StdResponse | AsyncResponse
         """
         return self._get("core/cities", async_mode=async_mode)
 
@@ -36,7 +36,7 @@ class CoreClient(BaseClient):
 
         :param city_id: ID of the city.
         :param async_mode: Whether to use async mode.
-        :return: Dictionary of city data.
+        :return: StdResponse | AsyncResponse
         """
         return self._get(f"core/cities/{city_id}", async_mode=async_mode)
 
@@ -48,7 +48,7 @@ class CoreClient(BaseClient):
         :param search: Search string to search for.
         :param async_mode: Whether to use async mode.
 
-        :return: Dictionary of filters.
+        :return: StdResponse | AsyncResponse
         """
         return self._get(f"core/cities/search/{search}", async_mode=async_mode)
 
@@ -59,7 +59,7 @@ class CoreClient(BaseClient):
         This endpoint returns all available filters for the entities.
         :param async_mode: Whether to use async mode.
 
-        :return: Dictionary of filters.
+        :return: StdResponse | AsyncResponse
         """
         return self._get("core/continents", async_mode=async_mode)
 
@@ -71,7 +71,7 @@ class CoreClient(BaseClient):
 
         :param continent_id: ID of the continent.
         :param async_mode: Whether to use async mode.
-        :return: Dictionary of continent data.
+        :return: StdResponse | AsyncResponse
         """
         return self._get(f"core/continents/{continent_id}", async_mode=async_mode)
 
@@ -82,7 +82,7 @@ class CoreClient(BaseClient):
         This endpoint returns all available filters for the entities.
         :param async_mode: Whether to use async mode.
 
-        :return: Dictionary of filters.
+        :return: StdResponse | AsyncResponse
         """
         return self._get("core/countries", async_mode=async_mode)
 
@@ -94,7 +94,8 @@ class CoreClient(BaseClient):
 
         :param country_id: ID of the country.
         :param async_mode: Whether to use async mode.
-        :return: Dictionary of country data.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(f"core/countries/{country_id}", async_mode=async_mode)
 
@@ -105,7 +106,8 @@ class CoreClient(BaseClient):
         This endpoint returns all available filters for the entities.
         :param search: string to search for.
         :param async_mode: Whether to use async mode.
-        :return: Dictionary of filters.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(f"core/countries/search/{search}", async_mode=async_mode)
 
@@ -115,7 +117,7 @@ class CoreClient(BaseClient):
         """
         This endpoint returns all available filters for the entities.
 
-        :return: Dictionary of filters.
+        :return: StdResponse | AsyncResponse
         """
         return self._get("core/regions", async_mode=async_mode)
 
@@ -127,7 +129,8 @@ class CoreClient(BaseClient):
 
         :param region_id: ID of the region.
         :param async_mode: Whether to use async mode.
-        :return: Dictionary of region data.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(f"core/regions/{region_id}", async_mode=async_mode)
 
@@ -138,7 +141,8 @@ class CoreClient(BaseClient):
         This endpoint returns all available filters for the entities.
         :param search: string to search for.
         :param async_mode: Whether to use async mode.
-        :return: Dictionary of filters.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(f"core/regions/search/{search}", async_mode=async_mode)
 
@@ -148,7 +152,8 @@ class CoreClient(BaseClient):
         """
         This endpoint returns all available filters  for the entities.
         :param async_mode: Whether to use async mode.
-        :return: Dictionary of filters.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get("core/types", async_mode=async_mode)
 
@@ -160,6 +165,7 @@ class CoreClient(BaseClient):
 
         :param type_id: ID of the type.
         :param async_mode: Whether to use async mode.
-        :return: Dictionary of type data.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(f"core/types/{type_id}", async_mode=async_mode)

@@ -40,7 +40,8 @@ class TeamsClient(BaseClient):
         :param selects: Fields to include or exclude in the response (optional).
         :param filters: Filters to apply to the results (optional).
         :param async_mode: Whether to use async mode.
-        :return: Iterator of team data.
+
+        :return: StdResponse | AsyncResponse
         """
         if team_id:
             return self._get(
@@ -92,7 +93,8 @@ class TeamsClient(BaseClient):
         :param selects: Fields to include or exclude in the response (optional).
         :param filters: Filters to apply to the results (optional).
         :param async_mode: Whether to use async mode.
-        :return: Iterator of player data.
+
+        :return: StdResponse | AsyncResponse
         """
         if player_id:
             return self._get(
@@ -132,7 +134,8 @@ class TeamsClient(BaseClient):
         :param selects: Fields to include or exclude in the response (optional).
         :param filters: Filters to apply to the results (optional).
         :param async_mode: Whether to use async mode.
-        :return: Iterator of player data.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             "players/latest",
@@ -160,7 +163,8 @@ class TeamsClient(BaseClient):
         :param selects: Fields to include or exclude in the response (optional).
         :param filters: Filters to apply to the results (optional).
         :param async_mode: Whether to use async mode.
-        :return: Iterator of coach data.
+
+        :return: StdResponse | AsyncResponse
         """
         if coach_id:
             return self._get(
@@ -200,7 +204,8 @@ class TeamsClient(BaseClient):
         :param selects: Fields to include or exclude in the response (optional).
         :param filters: Filters to apply to the results (optional).
         :param async_mode: Whether to use async mode.
-        :return: Iterator of coach data.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             "coaches/updated",
@@ -226,7 +231,8 @@ class TeamsClient(BaseClient):
         :param selects: Fields to include or exclude in the response (optional).
         :param filters: Filters to apply to the results (optional).
         :param async_mode: Whether to use async mode.
-        :return: Iterator of squad data.
+
+        :return: StdResponse | AsyncResponse
         """
         if not season_id:
             return self._get(
@@ -262,7 +268,8 @@ class TeamsClient(BaseClient):
         :param selects: Fields to include or exclude in the response (optional).
         :param filters: Filters to apply to the results (optional).
         :param async_mode: Whether to use async mode.
-        :return: Iterator of referee data.
+
+        :return: StdResponse | AsyncResponse
         """
         if referee_id:
             return self._get(

@@ -38,7 +38,8 @@ class OddsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over pre-match odds data.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             "odds/pre-match",
@@ -66,7 +67,8 @@ class OddsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over pre-match odds data.
+
+        :return: StdResponse | AsyncResponse
         """
         if bookmaker_id:
             return self._get(
@@ -100,7 +102,8 @@ class OddsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over updated pre-match odds data.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             "odds/pre-match/latest",
@@ -122,7 +125,8 @@ class OddsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over in-play odds data.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             "odds/inplay",
@@ -150,7 +154,8 @@ class OddsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over in-play odds data.
+
+        :return: StdResponse | AsyncResponse
         """
         if bookmaker_id:
             return self._get(
@@ -184,7 +189,8 @@ class OddsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over updated in-play odds data.
+
+        :return: StdResponse | AsyncResponse
         """
         return self._get(
             "odds/inplay/latest",
@@ -216,7 +222,8 @@ class OddsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
-        :return: Iterator over Premium pre-match odds data.
+
+        :return: StdResponse | AsyncResponse
         """
         if bookmaker_id:
             return self._get(
