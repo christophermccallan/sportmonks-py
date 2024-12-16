@@ -1,7 +1,7 @@
 import os
 import pytest
 import responses
-from sportmonks_py import APIClient
+from sportmonks_py.client import APIClient
 from sportmonks_py.utils.errors import ParameterLengthException, InvalidDateFormat
 
 

@@ -1,6 +1,6 @@
 from typing import Union
-from sportmonks_py.utils.common_types import StdResponse, AsyncResponse
-from sportmonks_py.base_client import BaseClient
+from .utils.common_types import StdResponse, AsyncResponse
+from .client.base_client import BaseClient
 
 
 class MyClient(BaseClient):

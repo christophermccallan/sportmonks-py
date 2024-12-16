@@ -60,4 +60,6 @@ def validate_locale(locale: str) -> None:
         locale (str): The locale to validate.
     """
     if locale not in supported_locales:
-        raise ValueError(f"Unsupported locale: {locale}. Supported locales: {supported_locales}")
+        raise ValueError(
+            f"Unsupported locale: {locale}. Supported locales: {supported_locales}"
+        )

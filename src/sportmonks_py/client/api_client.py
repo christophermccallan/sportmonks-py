@@ -1,7 +1,9 @@
 import logging
+
 from sportmonks_py.utils.config import config
-from sportmonks_py.base_client import BaseClient
-from sportmonks_py import APIClient
+from sportmonks_py.clients.base_client import BaseClient
+from sportmonks_py.clients.api_client import APIClient
+
 
 
 class SportMonksClient(BaseClient):

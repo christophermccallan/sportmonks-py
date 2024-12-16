@@ -28,7 +28,7 @@ class BaseClient:
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
-            locale: Optional[str] = None,
+        locale: Optional[str] = None,
     ) -> Union[Iterable[Response], AsyncIterator[Response]]:
         """
         If async_mode=False, returns a synchronous iterator over API results.

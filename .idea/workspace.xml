@@ -7,8 +7,10 @@
     <list default="true" id="c15499be-5773-4fe6-a507-17bd43cfaaa9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Changelog.md" beforeDir="false" afterPath="$PROJECT_DIR$/Changelog.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/base_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/base_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/docs/conf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/api_client.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/base_client.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sportmonks_py/core.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/core.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sportmonks_py/fixture.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/fixture.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sportmonks_py/leagues.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/leagues.py" afterDir="false" />
@@ -16,10 +18,12 @@
       <change beforePath="$PROJECT_DIR$/src/sportmonks_py/my.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/my.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sportmonks_py/odds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/odds.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sportmonks_py/standings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/standings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sportmonks_py/statistics.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/statistics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sportmonks_py/teams.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/teams.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sportmonks_py/utils/common_types.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/utils/common_types.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sportmonks_py/utils/helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sportmonks_py/utils/helper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/core/test_core.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/core/test_core.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/football/test_football.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/football/test_football.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,25 +51,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;Python tests.Python tests for test_football.test_fixture_odds.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.async-tests.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest in core_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest in test_api_client.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest in test_football.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest in test_odds.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest in test_teams.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.test_football.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.test_football_fixtures.py.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;allow-sorting-in-returns&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/chrismccallan/Repositories/packages/sportmonks-py&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Python tests.Python tests for test_football.test_fixture_odds.executor": "Run",
+    "Python tests.async-tests.executor": "Run",
+    "Python tests.pytest in core_test.py.executor": "Run",
+    "Python tests.pytest in test_api_client.py.executor": "Run",
+    "Python tests.pytest in test_football.py.executor": "Run",
+    "Python tests.pytest in test_odds.py.executor": "Run",
+    "Python tests.pytest in test_teams.py.executor": "Run",
+    "Python tests.test_core.executor": "Run",
+    "Python tests.test_football.executor": "Run",
+    "Python tests.test_football.py.executor": "Run",
+    "Python tests.test_football_async.executor": "Run",
+    "Python tests.test_football_fixtures.py.executor": "Run",
+    "Python.test_football.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "allow-sorting-in-returns",
+    "last_opened_file_path": "/Users/chrismccallan/Repositories/packages/sportmonks-py",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/sportmonks_py" />
@@ -74,36 +82,64 @@
       <recent name="$PROJECT_DIR$/tests/football" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_football.test_fixture_odds">
-    <configuration name="Python tests for test_football.test_fixture_odds" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.test_football.py">
+    <configuration name="test_football" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="sportmonks-py" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/football" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_football.test_fixture_odds&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/football/test_football.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="async-tests" type="tests" factoryName="py.test">
+    <configuration name="test_core" type="tests" factoryName="py.test">
+      <module name="sportmonks-py" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="SPORTMONKS_API_TOKEN" value="AuC3JSM0gbfa2befBwznIaMEfoxljatxq7zWYOYD3B3pP5U1BC51qh3IqHMy" />
       </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/../packages/sportmonks-py/.venv/bin/python" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/bin/python" />
       <option name="SDK_NAME" value="Python 3.12 (sportmonks-py)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/core/test_core.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test_football_async" type="tests" factoryName="py.test">
+      <module name="sportmonks-py" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="SPORTMONKS_API_TOKEN" value="AuC3JSM0gbfa2befBwznIaMEfoxljatxq7zWYOYD3B3pP5U1BC51qh3IqHMy" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/bin/python" />
+      <option name="SDK_NAME" value="Python 3.12 (sportmonks-py)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
@@ -111,20 +147,19 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest in test_football.py" type="tests" factoryName="py.test" nameIsGenerated="true">
+    <configuration name="test_football.py" type="tests" factoryName="py.test">
+      <module name="sportmonks-py" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="SPORTMONKS_API_TOKEN" value="AuC3JSM0gbfa2befBwznIaMEfoxljatxq7zWYOYD3B3pP5U1BC51qh3IqHMy" />
       </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/../packages/sportmonks-py/.venv/bin/python" />
-      <option name="SDK_NAME" value="Python 3.12 (sportmonks-py)" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
@@ -133,13 +168,15 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python tests.async-tests" />
-      <item itemvalue="Python tests.pytest in test_football.py" />
-      <item itemvalue="Python tests.Python tests for test_football.test_fixture_odds" />
+      <item itemvalue="Compound.sportmonks-py" />
+      <item itemvalue="Python.test_football" />
+      <item itemvalue="Python tests.test_football_async" />
+      <item itemvalue="Python tests.test_core" />
+      <item itemvalue="Python tests.test_football.py" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_football.test_fixture_odds" />
+        <item itemvalue="Python.test_football" />
       </list>
     </recent_temporary>
   </component>
