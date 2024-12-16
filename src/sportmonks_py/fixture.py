@@ -31,6 +31,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve all fixtures from the SportMonks database.
@@ -39,6 +40,7 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
+        :param locale: Language to return the data in.
 
         :return: StdResponse | AsyncResponse
         """
@@ -55,6 +57,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve specific fixtures by their IDs.
@@ -64,6 +67,7 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
+        :param locale: Language to return the data in.
 
         :return: StdResponse | AsyncResponse
 
@@ -80,6 +84,7 @@ class FixturesClient(BaseClient):
                 f"fixtures/{fixture_ids[0]}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
             )
 
         fixtures = ",".join(map(str, fixture_ids))
@@ -87,6 +92,7 @@ class FixturesClient(BaseClient):
             f"fixtures/multi/{fixtures}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_fixtures_by_date(
@@ -98,6 +104,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve fixtures for a specific date or date range.
@@ -109,6 +116,7 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
+        :param locale: Language to return the data in.
 
         :return: StdResponse | AsyncResponse
 
@@ -130,12 +138,14 @@ class FixturesClient(BaseClient):
                 endpoint,
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
             )
 
         return self._get(
             f"fixtures/date/{date1}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_h2h(
@@ -146,6 +156,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve head-to-head fixtures for two teams.
@@ -156,6 +167,7 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
+        :param locale: Language to return the data in.
 
         :return: StdResponse | AsyncResponse
 
@@ -168,6 +180,7 @@ class FixturesClient(BaseClient):
             f"fixtures/head-to-head/{team1}/{team2}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def search_fixtures(
@@ -177,6 +190,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Search fixtures by string or int.
@@ -186,6 +200,7 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
+        :param locale: Language to return the data in.
 
         :return: StdResponse | AsyncResponse
         """
@@ -193,6 +208,7 @@ class FixturesClient(BaseClient):
             f"fixtures/search/{search}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_fixtures_by_market(
@@ -202,6 +218,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve upcoming fixtures for a specific market.
@@ -211,6 +228,7 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
+        :param locale: Language to return the data in.
 
         :return: StdResponse | AsyncResponse
         """
@@ -218,6 +236,7 @@ class FixturesClient(BaseClient):
             f"fixtures/upcoming/markets/{market_id}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_fixtures_by_station(
@@ -227,6 +246,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve upcoming fixtures for a specific TV station.
@@ -236,6 +256,7 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
+        :param locale: Language to return the data in.
 
         :return: StdResponse | AsyncResponse
         """
@@ -243,6 +264,7 @@ class FixturesClient(BaseClient):
             f"fixtures/upcoming/tv-stations/{station_id}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_fixtures_by_updates(
@@ -251,6 +273,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve fixtures updated within the last 10 seconds.
@@ -259,6 +282,7 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
+        :param locale: Language to return the data in.
 
         :return: StdResponse | AsyncResponse
         """
@@ -266,6 +290,7 @@ class FixturesClient(BaseClient):
             "fixtures/latest",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_inplay_livescores(
@@ -274,6 +299,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         GET All Inplay Livescores: returns all the inplay fixtures.
@@ -282,6 +308,7 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
+        :param locale: Language to return the data in.
 
         :return: StdResponse | AsyncResponse
         """
@@ -289,6 +316,7 @@ class FixturesClient(BaseClient):
             "fixtures/livescores/inplay",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_all_livescores(
@@ -297,6 +325,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the fixtures 15 minutes before the game starts. It will also disappear 15 minutes after the game is finished.
@@ -305,6 +334,7 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
+        :param locale: Language to return the data in.
 
         :return: StdResponse | AsyncResponse
         """
@@ -312,6 +342,7 @@ class FixturesClient(BaseClient):
             "fixtures/livescores",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_livescore_updates(
@@ -320,6 +351,7 @@ class FixturesClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns you all livescores that have received updates within 10 seconds.
@@ -328,6 +360,7 @@ class FixturesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
+        :param locale: Language to return the data in.
 
         :return: StdResponse | AsyncResponse
         """
@@ -335,4 +368,5 @@ class FixturesClient(BaseClient):
             "fixtures/livescores/latest",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )

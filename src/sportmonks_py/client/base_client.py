@@ -35,7 +35,7 @@ class BaseClient:
         If async_mode=True, returns an asynchronous iterator over API results.
         Locale defaults to English if not selected or an invalid locale is provided.
         """
-        url = self._build_url(endpoint, params, includes, selects, filters)
+        url = self._build_url(endpoint, params, includes, selects, filters, locale)
 
         if async_mode:
             return self._get_async_generator(url)

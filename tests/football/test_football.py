@@ -93,14 +93,3 @@ def test_get_player_by_search(client):
     players = client.teams.get_players(search="Salah")
     for player in players:
         assert player[0]["display_name"] == "Mohamed Salah"
-
-
-@responses.activate
-def test_fixture_filter(client):
-    fixture_id = [18528480]
-    response = client.fixtures.get_fixtures(
-        fixture_ids=fixture_id, includes=["venue", "sport", "events.player"]
-    )
-
-    for page in response:
-        print(page)

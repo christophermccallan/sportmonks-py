@@ -34,6 +34,7 @@ class TeamsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve team information based on various criteria.
@@ -46,6 +47,7 @@ class TeamsClient(BaseClient):
         :param selects: Fields to include or exclude in the response (optional).
         :param filters: Filters to apply to the results (optional).
         :param async_mode: Whether to use async mode.
+        :param locale: Language to use for the response (optional).
 
         :return: StdResponse | AsyncResponse
         """
@@ -88,6 +90,7 @@ class TeamsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve player information based on various criteria.
@@ -99,6 +102,7 @@ class TeamsClient(BaseClient):
         :param selects: Fields to include or exclude in the response (optional).
         :param filters: Filters to apply to the results (optional).
         :param async_mode: Whether to use async mode.
+        :param locale: Language to use for the response (optional).
 
         :return: StdResponse | AsyncResponse
         """
@@ -107,23 +111,27 @@ class TeamsClient(BaseClient):
                 f"players/{player_id}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
             )
         if country_id:
             return self._get(
                 f"players/countries/{country_id}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
             )
         if search:
             return self._get(
                 f"players/search/{search}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
             )
         return self._get(
             "players",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_players_latest(

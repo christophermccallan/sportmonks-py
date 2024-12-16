@@ -30,6 +30,7 @@ class StandingsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all standings
@@ -38,6 +39,7 @@ class StandingsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
+        :param locale: Locale to use for the response.
 
         :return: StdResponse | AsyncResponse
         """
@@ -55,6 +57,7 @@ class StandingsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the full league standing table from your requested season ID.
@@ -64,6 +67,7 @@ class StandingsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
+        :param locale: Locale to use for the response.
 
         :return: StdResponse | AsyncResponse
 
@@ -77,6 +81,7 @@ class StandingsClient(BaseClient):
             f"standings/seasons/{season_id}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_standings_by_round(
@@ -86,6 +91,7 @@ class StandingsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the full league standing table from your requested round ID.
@@ -95,6 +101,7 @@ class StandingsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
+        :param locale: Locale to use for the response.
 
         :return: StdResponse | AsyncResponse
 
@@ -108,6 +115,7 @@ class StandingsClient(BaseClient):
             f"standings/rounds/{round_id}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_standings_corrections(
@@ -117,6 +125,7 @@ class StandingsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the standing corrections from your requested season ID.
@@ -126,6 +135,7 @@ class StandingsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
+        :param locale: Locale to use for the response.
 
         :return: StdResponse | AsyncResponse
 
@@ -139,6 +149,7 @@ class StandingsClient(BaseClient):
             f"standings/corrections/seasons/{season_id}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_live_standings_by_league(
@@ -148,6 +159,7 @@ class StandingsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the LIVE league standing table from your requested league ID.
@@ -157,6 +169,7 @@ class StandingsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
+        :param locale: Locale to use for the response.
 
         :return: StdResponse | AsyncResponse
 
@@ -170,6 +183,7 @@ class StandingsClient(BaseClient):
             f"standings/live/leagues/{league_id}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_topscorers_by_season(
@@ -179,6 +193,7 @@ class StandingsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all the topscorers per stage of the requested season
@@ -188,6 +203,7 @@ class StandingsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
+        :param locale: Locale to use for the response.
 
         :return: StdResponse | AsyncResponse
 
@@ -201,6 +217,7 @@ class StandingsClient(BaseClient):
             f"topscorers/seasons/{season_id}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
 
     def get_topscorers_by_stage(
@@ -210,6 +227,7 @@ class StandingsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all the topscorers from your requested stage ID.
@@ -219,6 +237,7 @@ class StandingsClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
+        :param locale: Locale to use for the response.
 
         :return: StdResponse | AsyncResponse
 
@@ -232,4 +251,5 @@ class StandingsClient(BaseClient):
             f"topscorers/stages/{stage_id}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
         )
