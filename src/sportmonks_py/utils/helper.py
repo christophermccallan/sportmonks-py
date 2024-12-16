@@ -50,16 +50,3 @@ def validate_positive_id(value: int, name: str) -> None:
     """
     if not isinstance(value, int) or value <= 0:
         raise ValueError(f"{name} must be a positive integer.")
-
-
-def validate_locale(locale: str) -> None:
-    """
-    Validates that the provided locale is supported by SportMonks.
-
-    Args:
-        locale (str): The locale to validate.
-    """
-    if locale not in supported_locales:
-        raise ValueError(
-            f"Unsupported locale: {locale}. Supported locales: {supported_locales}"
-        )
