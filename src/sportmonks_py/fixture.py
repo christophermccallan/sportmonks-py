@@ -8,6 +8,7 @@ from sportmonks_py.utils.common_types import (
     Filters,
     StdResponse,
     AsyncResponse,
+    Ordering,
 )
 
 
@@ -32,6 +33,7 @@ class FixturesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve all fixtures from the SportMonks database.
@@ -41,6 +43,7 @@ class FixturesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Language to return the data in.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -48,6 +51,8 @@ class FixturesClient(BaseClient):
             "fixtures",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
+            order=order,
         )
 
     def get_fixtures(
@@ -58,6 +63,7 @@ class FixturesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve specific fixtures by their IDs.
@@ -68,6 +74,7 @@ class FixturesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Language to return the data in.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -85,6 +92,7 @@ class FixturesClient(BaseClient):
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
                 locale=locale,
+                order=order,
             )
 
         fixtures = ",".join(map(str, fixture_ids))
@@ -93,6 +101,7 @@ class FixturesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_fixtures_by_date(
@@ -105,6 +114,7 @@ class FixturesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve fixtures for a specific date or date range.
@@ -117,6 +127,7 @@ class FixturesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Language to return the data in.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -139,6 +150,7 @@ class FixturesClient(BaseClient):
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
                 locale=locale,
+                order=order,
             )
 
         return self._get(
@@ -146,6 +158,7 @@ class FixturesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_h2h(
@@ -157,6 +170,7 @@ class FixturesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve head-to-head fixtures for two teams.
@@ -168,6 +182,7 @@ class FixturesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Language to return the data in.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -181,6 +196,7 @@ class FixturesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def search_fixtures(
@@ -191,6 +207,7 @@ class FixturesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Search fixtures by string or int.
@@ -201,6 +218,7 @@ class FixturesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Language to return the data in.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -209,6 +227,7 @@ class FixturesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_fixtures_by_market(
@@ -219,6 +238,7 @@ class FixturesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve upcoming fixtures for a specific market.
@@ -229,6 +249,7 @@ class FixturesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Language to return the data in.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -237,6 +258,7 @@ class FixturesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_fixtures_by_station(
@@ -247,6 +269,7 @@ class FixturesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve upcoming fixtures for a specific TV station.
@@ -257,6 +280,7 @@ class FixturesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Language to return the data in.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -265,6 +289,7 @@ class FixturesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_fixtures_by_updates(
@@ -274,6 +299,7 @@ class FixturesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve fixtures updated within the last 10 seconds.
@@ -283,6 +309,7 @@ class FixturesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Language to return the data in.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -291,6 +318,7 @@ class FixturesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_inplay_livescores(
@@ -300,6 +328,7 @@ class FixturesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         GET All Inplay Livescores: returns all the inplay fixtures.
@@ -309,6 +338,7 @@ class FixturesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Language to return the data in.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -317,6 +347,7 @@ class FixturesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_all_livescores(
@@ -326,6 +357,7 @@ class FixturesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the fixtures 15 minutes before the game starts. It will also disappear 15 minutes after the game is finished.
@@ -335,6 +367,7 @@ class FixturesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Language to return the data in.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -343,6 +376,7 @@ class FixturesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_livescore_updates(
@@ -352,6 +386,7 @@ class FixturesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns you all livescores that have received updates within 10 seconds.
@@ -361,6 +396,7 @@ class FixturesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Language to return the data in.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -369,4 +405,5 @@ class FixturesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )

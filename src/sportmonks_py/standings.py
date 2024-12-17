@@ -7,6 +7,7 @@ from sportmonks_py.utils.common_types import (
     Filters,
     StdResponse,
     AsyncResponse,
+    Ordering,
 )
 
 
@@ -31,6 +32,7 @@ class StandingsClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all standings
@@ -40,6 +42,7 @@ class StandingsClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -48,6 +51,8 @@ class StandingsClient(BaseClient):
             "standings",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
+            order=order,
         )
 
     def get_season_standings(
@@ -58,6 +63,7 @@ class StandingsClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the full league standing table from your requested season ID.
@@ -68,6 +74,7 @@ class StandingsClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -82,6 +89,7 @@ class StandingsClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_standings_by_round(
@@ -92,6 +100,7 @@ class StandingsClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the full league standing table from your requested round ID.
@@ -102,6 +111,7 @@ class StandingsClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -116,6 +126,7 @@ class StandingsClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_standings_corrections(
@@ -126,6 +137,7 @@ class StandingsClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the standing corrections from your requested season ID.
@@ -150,6 +162,7 @@ class StandingsClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_live_standings_by_league(
@@ -160,6 +173,7 @@ class StandingsClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the LIVE league standing table from your requested league ID.
@@ -170,6 +184,7 @@ class StandingsClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -184,6 +199,7 @@ class StandingsClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_topscorers_by_season(
@@ -194,6 +210,7 @@ class StandingsClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all the topscorers per stage of the requested season
@@ -204,6 +221,7 @@ class StandingsClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -218,6 +236,7 @@ class StandingsClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_topscorers_by_stage(
@@ -228,6 +247,7 @@ class StandingsClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all the topscorers from your requested stage ID.
@@ -238,6 +258,7 @@ class StandingsClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -252,4 +273,5 @@ class StandingsClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )

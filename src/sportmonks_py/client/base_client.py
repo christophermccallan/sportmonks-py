@@ -9,7 +9,13 @@ from sportmonks_py.utils.errors import (
     ApiTokenMissingError,
     MalformedResponseError,
 )
-from sportmonks_py.utils.common_types import Includes, Response, Selects, Filters
+from sportmonks_py.utils.common_types import (
+    Includes,
+    Response,
+    Selects,
+    Filters,
+    Ordering,
+)
 
 
 class BaseClient:
@@ -29,13 +35,16 @@ class BaseClient:
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[Iterable[Response], AsyncIterator[Response]]:
         """
         If async_mode=False, returns a synchronous iterator over API results.
         If async_mode=True, returns an asynchronous iterator over API results.
         Locale defaults to English if not selected or an invalid locale is provided.
         """
-        url = self._build_url(endpoint, params, includes, selects, filters, locale)
+        url = self._build_url(
+            endpoint, params, includes, selects, filters, locale, order
+        )
 
         if async_mode:
             return self._get_async_generator(url)
@@ -114,6 +123,7 @@ class BaseClient:
         selects: Optional[Selects],
         filters: Optional[Filters],
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> str:
         params = params or {}
 
@@ -125,6 +135,8 @@ class BaseClient:
             params.update({f"filter[{k}]": v for k, v in filters.items()})
         if locale:
             params.update({"locale": locale})
+        if order:
+            params.update({"order": order})
 
         params = {k: v for k, v in params.items() if v}
 
