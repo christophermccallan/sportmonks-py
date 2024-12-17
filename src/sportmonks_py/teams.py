@@ -7,6 +7,7 @@ from sportmonks_py.utils.common_types import (
     Filters,
     StdResponse,
     AsyncResponse,
+    Ordering,
 )
 
 
@@ -35,6 +36,7 @@ class TeamsClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve team information based on various criteria.
@@ -48,6 +50,7 @@ class TeamsClient(BaseClient):
         :param filters: Filters to apply to the results (optional).
         :param async_mode: Whether to use async mode.
         :param locale: Language to use for the response (optional).
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -56,29 +59,39 @@ class TeamsClient(BaseClient):
                 f"teams/{team_id}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
+                order=order,
             )
         if country_id:
             return self._get(
                 f"teams/countries/{country_id}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
+                order=order,
             )
         if season_id:
             return self._get(
                 f"teams/seasons/{season_id}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
+                order=order,
             )
         if search:
             return self._get(
                 f"teams/search/{search}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
+                order=order,
             )
         return self._get(
             "teams",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
+            order=order,
         )
 
     def get_players(
@@ -91,6 +104,7 @@ class TeamsClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve player information based on various criteria.
@@ -103,6 +117,7 @@ class TeamsClient(BaseClient):
         :param filters: Filters to apply to the results (optional).
         :param async_mode: Whether to use async mode.
         :param locale: Language to use for the response (optional).
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -112,6 +127,7 @@ class TeamsClient(BaseClient):
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
                 locale=locale,
+                order=order,
             )
         if country_id:
             return self._get(
@@ -119,6 +135,7 @@ class TeamsClient(BaseClient):
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
                 locale=locale,
+                order=order,
             )
         if search:
             return self._get(
@@ -126,12 +143,14 @@ class TeamsClient(BaseClient):
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
                 locale=locale,
+                order=order,
             )
         return self._get(
             "players",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_players_latest(
@@ -140,6 +159,8 @@ class TeamsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve all players updated within the last two hours.
@@ -148,6 +169,8 @@ class TeamsClient(BaseClient):
         :param selects: Fields to include or exclude in the response (optional).
         :param filters: Filters to apply to the results (optional).
         :param async_mode: Whether to use async mode.
+        :param locale: Language to use for the response (optional).
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -155,6 +178,8 @@ class TeamsClient(BaseClient):
             "players/latest",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
+            order=order,
         )
 
     def get_coaches(
@@ -166,6 +191,8 @@ class TeamsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve coach information based on various criteria.
@@ -177,6 +204,8 @@ class TeamsClient(BaseClient):
         :param selects: Fields to include or exclude in the response (optional).
         :param filters: Filters to apply to the results (optional).
         :param async_mode: Whether to use async mode.
+        :param locale: Language to use for the response (optional).
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -185,23 +214,31 @@ class TeamsClient(BaseClient):
                 f"coaches/{coach_id}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
+                order=order,
             )
         if country_id:
             return self._get(
                 f"coaches/countries/{country_id}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
+                order=order,
             )
         if search:
             return self._get(
                 f"coaches/search/{search}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
+                order=order,
             )
         return self._get(
             "coaches",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
+            order=order,
         )
 
     def get_coaches_latest(
@@ -210,6 +247,8 @@ class TeamsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve all coaches updated within the last two hours.
@@ -218,6 +257,8 @@ class TeamsClient(BaseClient):
         :param selects: Fields to include or exclude in the response (optional).
         :param filters: Filters to apply to the results (optional).
         :param async_mode: Whether to use async mode.
+        :param locale: Language to use for the response (optional).
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -225,6 +266,8 @@ class TeamsClient(BaseClient):
             "coaches/updated",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
+            order=order,
         )
 
     def get_team_squad(
@@ -235,6 +278,8 @@ class TeamsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve a team's squad for a specific season.
@@ -245,6 +290,8 @@ class TeamsClient(BaseClient):
         :param selects: Fields to include or exclude in the response (optional).
         :param filters: Filters to apply to the results (optional).
         :param async_mode: Whether to use async mode.
+        :param locale: Language to use for the response (optional).
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -253,11 +300,15 @@ class TeamsClient(BaseClient):
                 f"squads/teams/{team_id}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
+                order=order,
             )
         return self._get(
             f"squads/seasons/{season_id}/teams/{team_id}",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
+            order=order,
         )
 
     def get_referee(
@@ -270,6 +321,8 @@ class TeamsClient(BaseClient):
         selects: Optional[Selects] = None,
         filters: Optional[Filters] = None,
         async_mode: bool = False,
+        locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Retrieve referee information based on various criteria.
@@ -282,6 +335,8 @@ class TeamsClient(BaseClient):
         :param selects: Fields to include or exclude in the response (optional).
         :param filters: Filters to apply to the results (optional).
         :param async_mode: Whether to use async mode.
+        :param locale: Language to use for the response (optional).
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -290,27 +345,37 @@ class TeamsClient(BaseClient):
                 f"referees/{referee_id}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
+                order=order,
             )
         if country_id:
             return self._get(
                 f"referees/countries/{country_id}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
+                order=order,
             )
         if search:
             return self._get(
                 f"referees/search/{search}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
+                order=order,
             )
         if season_id:
             return self._get(
                 f"referees/seasons/{season_id}",
                 params={"include": includes, "select": selects, "filter": filters},
                 async_mode=async_mode,
+                locale=locale,
+                order=order,
             )
         return self._get(
             "referees",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
+            order=order,
         )

@@ -7,6 +7,7 @@ from sportmonks_py.utils.common_types import (
     Filters,
     StdResponse,
     AsyncResponse,
+    Ordering,
 )
 from sportmonks_py.utils.errors import InvalidDateFormat
 from sportmonks_py.utils.helper import validate_date_format
@@ -33,6 +34,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the leagues available within your subscription
@@ -42,6 +44,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -50,6 +53,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_league(
@@ -60,6 +64,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the league you've requested by ID.
@@ -70,6 +75,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -84,6 +90,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_live_leagues(
@@ -93,6 +100,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the leagues that with fixtures that are currently being played.
@@ -102,6 +110,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -111,6 +120,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_league_by_fixture_date(
@@ -121,6 +131,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the leagues with fixtures from your requested fixture date.
@@ -131,6 +142,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -145,6 +157,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_leagues_by_country_id(
@@ -155,6 +168,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the leagues with fixtures from your requested fixture date.
@@ -165,6 +179,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -179,6 +194,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def search_leagues(
@@ -189,6 +205,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the leagues that match your search.
@@ -199,6 +216,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -207,6 +225,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_all_leagues_by_team(
@@ -217,6 +236,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the current and historical leagues from your requested team id.
@@ -227,6 +247,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -235,6 +256,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_current_leagues_by_team(
@@ -245,6 +267,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the current leagues of your requested team id.
@@ -255,6 +278,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -263,6 +287,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_all_seasons(
@@ -272,6 +297,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the seasons available within your subscription
@@ -281,6 +307,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -290,6 +317,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_season(
@@ -300,6 +328,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns the league you've requested by ID.
@@ -310,6 +339,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -324,6 +354,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_season_by_team_id(
@@ -334,6 +365,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns seasons by team ID.
@@ -344,6 +376,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -358,6 +391,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def search_seasons(
@@ -368,6 +402,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the seasons that match your search.
@@ -378,6 +413,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -386,6 +422,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_all_stages(
@@ -395,6 +432,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all stages available within your subscription
@@ -404,6 +442,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -412,6 +451,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_stage_by_id(
@@ -422,6 +462,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns stage information from your requested stage ID.
@@ -432,6 +473,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -446,6 +488,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_stages_by_season_id(
@@ -456,6 +499,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns stage information from your requested stage ID.
@@ -466,6 +510,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -480,6 +525,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def search_stages(
@@ -490,6 +536,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all stages that matches your search.
@@ -499,6 +546,8 @@ class LeaguesClient(BaseClient):
         :param selects: Fields to include or exclude in the response.
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
+        :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -507,6 +556,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_all_rounds(
@@ -516,6 +566,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all the rounds available within your subscription.
@@ -525,6 +576,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -533,6 +585,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_round(
@@ -543,6 +596,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns round information from your requested round ID.
@@ -553,6 +607,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -564,6 +619,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_round_by_season_id(
@@ -574,6 +630,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns round information from your requested round ID.
@@ -584,6 +641,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -595,6 +653,7 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def search_rounds(
@@ -605,6 +664,7 @@ class LeaguesClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns all stages that matches your search
@@ -615,6 +675,7 @@ class LeaguesClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Boolean flag for asynchronous mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -625,4 +686,5 @@ class LeaguesClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )

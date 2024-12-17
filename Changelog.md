@@ -1,5 +1,12 @@
 # Change log
 
+[0.0.7] - 17/12/2024
+**Changes**
+- Supports order in responses, endpoints that support sorting now have a `sort` parameter that allows for sorting by `asc` or `desc`
+
+[0.0.6] - 16/12/2024
+- Version bump release
+
 [0.0.5] - 16/12/2024
 **New**
 - Allows for configuration of the locale to return supported endpoints in the desired language.

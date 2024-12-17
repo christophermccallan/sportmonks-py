@@ -7,6 +7,7 @@ from sportmonks_py.utils.common_types import (
     Filters,
     StdResponse,
     AsyncResponse,
+    Ordering,
 )
 
 
@@ -31,6 +32,7 @@ class OtherClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all the available pre-match news articles within your subscription
@@ -40,6 +42,7 @@ class OtherClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -49,6 +52,7 @@ class OtherClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_prematch_news_by_season(
@@ -59,6 +63,7 @@ class OtherClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all pre-match news articles from your requested season ID.
@@ -69,6 +74,7 @@ class OtherClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -83,6 +89,7 @@ class OtherClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_upcoming_prematch_news(
@@ -92,6 +99,7 @@ class OtherClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all pre-match news articles for the upcoming fixtures within your subscription.
@@ -110,6 +118,7 @@ class OtherClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_postmatch_news(
@@ -119,6 +128,7 @@ class OtherClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all the available post-match news articles within your subscription.
@@ -128,6 +138,7 @@ class OtherClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -137,6 +148,7 @@ class OtherClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_postmatch_news_by_season(
@@ -147,6 +159,7 @@ class OtherClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all post-match news articles from your requested season ID.
@@ -157,6 +170,7 @@ class OtherClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -171,6 +185,7 @@ class OtherClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_rivals(
@@ -180,6 +195,7 @@ class OtherClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns all the teams within your subscription with the rivals information (if available).
@@ -197,6 +213,8 @@ class OtherClient(BaseClient):
             "rivals",
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
+            locale=locale,
+            order=order,
         )
 
     def get_team_rivals(
@@ -207,6 +225,7 @@ class OtherClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         This endpoint returns the rivals of your requested team ID (if available).
@@ -217,6 +236,7 @@ class OtherClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -231,6 +251,7 @@ class OtherClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_commentaries(
@@ -240,6 +261,7 @@ class OtherClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         Returns a textual representation of commentaries
@@ -249,6 +271,7 @@ class OtherClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
         """
@@ -258,6 +281,7 @@ class OtherClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
 
     def get_fixture_commentary(
@@ -268,6 +292,7 @@ class OtherClient(BaseClient):
         filters: Optional[Filters] = None,
         async_mode: bool = False,
         locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
     ) -> Union[StdResponse, AsyncResponse]:
         """
         RReturns a textual representation from the requested fixture ID.
@@ -278,6 +303,7 @@ class OtherClient(BaseClient):
         :param filters: Filters to apply to the results.
         :param async_mode: Whether to use async mode.
         :param locale: Locale to use for the response.
+        :param order: Order to sort the results in (asc or desc).
 
         :return: StdResponse | AsyncResponse
 
@@ -292,4 +318,5 @@ class OtherClient(BaseClient):
             params={"include": includes, "select": selects, "filter": filters},
             async_mode=async_mode,
             locale=locale,
+            order=order,
         )
