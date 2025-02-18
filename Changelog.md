@@ -1,5 +1,9 @@
 # Change log
 
+[0.0.8] - 18/02/2025
+**Changes**
+- Add endpoint for venue querying/searching
+
 [0.0.7] - 17/12/2024
 **Changes**
 - Supports order in responses, endpoints that support sorting now have a `sort` parameter that allows for sorting by `asc` or `desc`
