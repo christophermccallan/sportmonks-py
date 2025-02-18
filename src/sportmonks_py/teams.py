@@ -379,3 +379,66 @@ class TeamsClient(BaseClient):
             locale=locale,
             order=order,
         )
+
+    def get_venues(
+        self,
+        venue_id: Optional[int] = None,
+        country_id: Optional[int] = None,
+        season_id: Optional[int] = None,
+        search: Optional[str] = None,
+        includes: Optional[Includes] = None,
+        selects: Optional[Selects] = None,
+        filters: Optional[Filters] = None,
+        async_mode: bool = False,
+        locale: Optional[str] = None,
+        order: Optional[Ordering] = None,
+    ) -> Union[StdResponse, AsyncResponse]:
+        """
+        Retrieve venue information based on various criteria.
+
+        :param venue: ID of the venue (optional).
+        :param season_id: ID of the season to filter venue by (optional).
+        :param search: Search string for venue names (optional).
+        :param includes: Objects to include in the response (optional).
+        :param selects: Fields to include or exclude in the response (optional).
+        :param filters: Filters to apply to the results (optional).
+        :param async_mode: Whether to use async mode.
+        :param locale: Language to use for the response (optional).
+        :param order: Order to sort the results in (asc or desc).
+
+        :return: StdResponse | AsyncResponse
+        """
+        if venue_id:
+            return self._get(
+                f"venues/{venue_id}",
+                params={"include": includes, "select": selects, "filter": filters},
+                async_mode=async_mode,
+                locale=locale,
+                order=order,
+            )
+        if search:
+            return self._get(
+                f"venues/search/{search}",
+                params={"include": includes, "select": selects, "filter": filters},
+                async_mode=async_mode,
+                locale=locale,
+                order=order,
+            )
+        if season_id:
+            return self._get(
+                f"venues/seasons/{season_id}",
+                params={"include": includes, "select": selects, "filter": filters},
+                async_mode=async_mode,
+                locale=locale,
+                order=order,
+            )
+        return self._get(
+            "venues",
+            params={"include": includes, "select": selects, "filter": filters},
+            async_mode=async_mode,
+            locale=locale,
+            order=order,
+        )
+
+
+
